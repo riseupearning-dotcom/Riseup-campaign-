@@ -29,9 +29,9 @@
 
         .doodle {
             position: absolute;
-            color: rgba(108, 92, 231, 0.12); /* Slightly more visible */
+            color: rgba(108, 92, 231, 0.12);
             pointer-events: none;
-            animation: floatDoodle 10s linear infinite; /* Faster animation */
+            animation: floatDoodle 10s linear infinite;
         }
 
         @keyframes floatDoodle {
@@ -41,27 +41,39 @@
             100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
         }
 
-        /* --- Header & Branding --- */
+        /* --- Professional Seamless Header --- */
         .app-header {
-            padding: 20px;
+            padding: 15px 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(108, 92, 231, 0.05);
         }
 
-        .logo-box { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+        .logo-box { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+        
         .header-logo {
-            width: 38px; height: 38px; border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(108, 92, 231, 0.2);
+            width: 45px;
+            height: auto;
+            border-radius: 0; /* Box hata diya */
+            box-shadow: none; /* Shadow hata di */
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1));
             animation: pulseLogo 3s infinite ease-in-out;
         }
 
-        @keyframes pulseLogo { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
-        .brand-name { font-size: 26px; font-weight: 900; color: #6c5ce7; letter-spacing: 2px; text-transform: uppercase; }
+        @keyframes pulseLogo { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+        
+        .brand-name { 
+            font-size: 26px; 
+            font-weight: 900; 
+            color: #6c5ce7; 
+            letter-spacing: 1.5px; 
+            text-transform: uppercase; 
+        }
 
-        /* --- ⚠️ Professional Instruction --- */
+        /* --- Professional Instruction --- */
         .instruction-box {
             margin: 15px 20px;
             background: #6c5ce7;
@@ -120,7 +132,7 @@
 
         .tagline-niche { font-size: 15px; color: #a0a0a0; font-weight: 600; }
 
-        /* --- Services/Footer Card --- */
+        /* --- Footer Card --- */
         .details-card {
             background: white;
             border-radius: 40px 40px 0 0;
@@ -157,7 +169,7 @@
 
     <div class="instruction-box">
         <span class="main-instr">⚠️ MINIMUM 5 CAMPAIGNS REQUIRED</span>
-        <span class="sub-instr">SCREENSHOT IS MANDATORY TO START YOUR WORK</span>
+        <span class="sub-instr">SCREENSHOT IS MANDATORY FOR PAYOUT</span>
     </div>
 
     <main class="campaign-container">
@@ -186,12 +198,10 @@
         const doodleBg = document.getElementById('doodleBg');
         const icons = ['fa-coins', 'fa-arrow-trend-up', 'fa-wallet', 'fa-rocket', 'fa-circle', 'fa-bolt', 'fa-star', 'fa-gem'];
         
-        // Increased count to 35 for higher density
         for (let i = 0; i < 35; i++) {
             const icon = document.createElement('i');
             icon.className = `fas ${icons[Math.floor(Math.random() * icons.length)]} doodle`;
             icon.style.left = Math.random() * 100 + 'vw';
-            // Varied animation duration for natural feel
             icon.style.animationDuration = (Math.random() * 5 + 7) + 's';
             icon.style.animationDelay = (Math.random() * 10) + 's';
             icon.style.fontSize = (Math.random() * 25 + 12) + 'px';
