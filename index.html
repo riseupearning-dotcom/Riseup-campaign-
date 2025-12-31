@@ -8,203 +8,221 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; -webkit-tap-highlight-color: transparent; }
 
         body {
-            background: radial-gradient(circle at top right, #fce4ec, #e3f2fd, #ffffff);
+            background: linear-gradient(180deg, #f8faff 0%, #ffffff 100%);
             min-height: 100vh;
             color: #333;
+            overflow-x: hidden;
+        }
+
+        /* 1. Fully Integrated & Animated Header */
+        .app-header {
+            padding: 25px 20px;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(108, 92, 231, 0.08), transparent);
         }
 
-        /* Header with Left-Aligned Logo */
-        header {
-            padding: 15px 20px;
+        /* Logo & Name Container */
+        .logo-box {
             display: flex;
             align-items: center;
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            gap: 12px;
+            cursor: pointer;
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .logo-img {
+        /* Logo Animation: Soft Floating & Pulse */
+        .header-logo {
+            width: 40px;
             height: 40px;
-            width: auto;
-            border-radius: 8px;
-            animation: softMove 3s ease-in-out infinite;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(108, 92, 231, 0.2);
+            animation: logoPulse 3s ease-in-out infinite;
         }
 
-        @keyframes softMove {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(5px); }
+        @keyframes logoPulse {
+            0%, 100% { transform: translateY(0) scale(1); filter: brightness(1); }
+            50% { transform: translateY(-5px) scale(1.05); filter: brightness(1.1); }
         }
 
-        /* Professional Notification Area */
-        .notice-wrapper {
-            padding: 20px;
-            display: flex;
-            justify-content: center;
+        /* Brand Name Animation: Neon Glow & Breathe */
+        .brand-name {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: #6c5ce7;
+            text-transform: uppercase;
+            position: relative;
+            animation: textBreathe 3s ease-in-out infinite;
         }
 
-        .notice-pill {
+        @keyframes textBreathe {
+            0%, 100% { opacity: 1; text-shadow: 0 0 8px rgba(108, 92, 231, 0.1); transform: scale(1); }
+            50% { opacity: 0.8; text-shadow: 0 0 20px rgba(108, 92, 231, 0.4); transform: scale(0.98); }
+        }
+
+        /* Click Interaction */
+        .logo-box:active { transform: scale(0.9); }
+
+        /* 2. Dual Instruction Card - Dynamic Slide In */
+        .notice-card {
+            margin: 10px 20px;
             background: #6c5ce7;
             color: white;
-            padding: 12px 20px;
-            border-radius: 15px;
-            font-size: 11px;
-            font-weight: 700;
-            line-height: 1.4;
+            padding: 18px;
+            border-radius: 20px;
             text-align: center;
-            box-shadow: 0 10px 25px rgba(108, 92, 231, 0.2);
-            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 15px 35px rgba(108, 92, 231, 0.25);
+            border: 1px solid rgba(255,255,255,0.1);
+            animation: slideInUp 0.8s ease-out;
         }
 
-        /* Hero Campaign Section */
-        .hero-container {
-            padding: 0 20px 20px;
-            display: flex;
-            justify-content: center;
+        @keyframes slideInUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
-        .hero-card {
-            background: #ffffff;
-            width: 100%;
-            max-width: 400px;
-            border-radius: 35px;
-            padding: 45px 25px;
+        .instruction-1 { font-size: 13px; font-weight: 700; margin-bottom: 6px; display: block; }
+        .instruction-2 { font-size: 10px; font-weight: 500; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.8px; }
+
+        /* 3. Main Campaign Content */
+        .campaign-body {
+            padding: 40px 20px;
             text-align: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.04);
         }
 
-        .hero-card h1 {
-            font-size: 42px;
-            font-weight: 800;
+        .main-title {
+            font-size: 52px;
+            font-weight: 900;
             color: #1a1a1a;
-            line-height: 1;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-        }
-
-        .hero-card p {
-            color: #a0a0a0;
-            font-size: 14px;
+            line-height: 0.85;
             margin-bottom: 35px;
-            font-weight: 500;
+            letter-spacing: -3px;
+            animation: fadeIn 1s ease-in;
         }
 
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* 4. Make Now Button - Floating & Glow */
         .make-now-btn {
             background: #6c5ce7;
             color: white;
             text-decoration: none;
-            padding: 20px;
-            border-radius: 22px;
+            padding: 22px;
+            width: 85%;
+            margin: 0 auto 20px;
+            border-radius: 25px;
             font-weight: 700;
-            font-size: 18px;
+            font-size: 19px;
             display: block;
+            box-shadow: 0 12px 30px rgba(108, 92, 231, 0.4);
             transition: 0.3s;
-            box-shadow: 0 12px 30px rgba(108, 92, 231, 0.3);
+            position: relative;
+            overflow: hidden;
         }
 
-        .make-now-btn:active { transform: scale(0.95); }
-
-        /* Information Footer */
-        .details-section {
-            padding: 20px;
-            margin-bottom: 30px;
+        .make-now-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 3s infinite;
         }
 
-        .details-card {
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 30px;
-            padding: 30px 25px;
-            backdrop-filter: blur(10px);
+        @keyframes shimmer { 0% { left: -100%; } 100% { left: 100%; } }
+        .make-now-btn:active { transform: scale(0.95); box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4); }
+
+        .tagline { font-size: 15px; color: #a0a0a0; font-weight: 500; }
+
+        /* 5. Bottom Services Section - Seamless */
+        .services-section {
+            margin-top: 40px;
+            padding: 35px 25px;
+            background: white;
+            border-radius: 45px 45px 0 0;
+            box-shadow: 0 -15px 40px rgba(0,0,0,0.04);
         }
 
-        h3 { color: #6c5ce7; font-size: 15px; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 1px; }
-        .about-text { font-size: 14px; color: #555; line-height: 1.7; margin-bottom: 25px; }
+        .section-label { color: #6c5ce7; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 18px; letter-spacing: 1.5px; }
+        .about-para { font-size: 14px; color: #666; line-height: 1.8; margin-bottom: 25px; }
 
-        /* Service Tags */
-        .tags-flex { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
-        .tag { background: #fff; padding: 8px 16px; border-radius: 12px; font-size: 12px; font-weight: 600; color: #333; box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+        .tag-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 35px; }
+        .service-tag { background: #f0f2ff; padding: 10px 18px; border-radius: 14px; font-size: 12px; font-weight: 600; color: #555; }
 
-        /* Social Icons Section */
-        .social-box { display: flex; flex-direction: column; gap: 15px; }
-        .social-item {
+        /* Social Links Card Styling */
+        .social-link {
             display: flex;
             align-items: center;
             gap: 15px;
-            text-decoration: none;
-            padding: 15px;
+            padding: 18px;
             background: #fff;
-            border-radius: 18px;
+            border-radius: 22px;
+            margin-bottom: 15px;
+            text-decoration: none;
+            border: 1px solid #f2f2f2;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
             transition: 0.3s;
-            border: 1px solid rgba(0,0,0,0.02);
         }
-
-        .social-item i { font-size: 24px; }
+        .social-link i { font-size: 24px; }
+        .social-link span { font-size: 15px; font-weight: 700; color: #333; }
         .fa-whatsapp { color: #25D366; }
         .fa-instagram { color: #E1306C; }
-        .social-label { font-size: 15px; font-weight: 600; color: #333; }
+        .social-link:active { transform: translateX(10px); background: #fafaff; }
 
-        .social-item:hover { transform: translateX(8px); box-shadow: 0 8px 20px rgba(0,0,0,0.06); }
-
-        .footer-note { text-align: center; margin-top: 40px; font-size: 12px; color: #bbb; padding-bottom: 20px; }
     </style>
 </head>
 <body>
 
-    <header>
-        <img src="https://i.ibb.co/N6hV9Z31/IMG-20251231-170337.jpg" alt="Rise Up" class="logo-img">
-    </header>
-
-    <div class="notice-wrapper">
-        <div class="notice-pill">
-            <i class="fas fa-info-circle"></i> ATTENTION: MINIMUM 5 CAMPAIGNS REQUIRED<br>
-            <span style="font-weight: 400; font-size: 10px; opacity: 0.9;">SCREENSHOT SUBMISSION IS MANDATORY FOR PAYOUT</span>
+    <div class="app-header">
+        <div class="logo-box" onclick="location.reload();">
+            <img src="https://i.ibb.co/N6hV9Z31/IMG-20251231-170337.jpg" alt="Logo" class="header-logo">
+            <span class="brand-name">RISE UP</span>
         </div>
     </div>
 
-    <div class="hero-container">
-        <div class="hero-card">
-            <h1>MAKE YOUR<br>CAMPAIGN</h1>
-            <p>Rise higher, earn smarter with Rise Up.</p>
-            <a href="home.html" class="make-now-btn">MAKE NOW</a>
-        </div>
+    <div class="notice-card">
+        <span class="instruction-1"><i class="fas fa-shield-check"></i> MINIMUM 5 CAMPAIGNS REQUIRED</span>
+        <span class="instruction-2">Screenshot submission is mandatory for payout</span>
     </div>
 
-    <div class="details-section">
-        <div class="details-card">
-            <h3>About Us</h3>
-            <p class="about-text">Rise Up is a professional platform dedicated to empowering individuals through digital tasks.</p>
+    <div class="campaign-body">
+        <h1 class="main-title">MAKE<br>YOUR<br>CAMPAIGN</h1>
+        
+        <a href="home.html" class="make-now-btn">MAKE NOW</a>
+        
+        <p class="tagline">Rise higher, earn smarter with Rise Up.</p>
+    </div>
 
-            <h3>Our Services</h3>
-            <div class="tags-flex">
-                <span class="tag">Data Entry</span>
-                <span class="tag">Demet Account</span>
-                <span class="tag">Pending KYC Clear</span>
-            </div>
+    <div class="services-section">
+        <div class="section-label">Our Story</div>
+        <p class="about-para">Rise Up is a professional platform dedicated to empowering individuals through digital excellence and transparent tasks.</p>
 
-            <h3>Founders</h3>
-            <p class="about-text" style="font-weight: 700;">Akash & Sourabh</p>
-
-            <h3>Connect with Support</h3>
-            <div class="social-box">
-                <a href="https://wa.me/918968146117" class="social-item">
-                    <i class="fab fa-whatsapp"></i>
-                    <span class="social-label">WhatsApp Support</span>
-                </a>
-                <a href="https://www.instagram.com/riseup_by_akash?igsh=MXE4MmJmNDhyNTAxNQ==" class="social-item">
-                    <i class="fab fa-instagram"></i>
-                    <span class="social-label">Instagram Official</span>
-                </a>
-            </div>
+        <div class="section-label">Expertise</div>
+        <div class="tag-row">
+            <span class="service-tag">Data Entry</span>
+            <span class="service-tag">Demet Account</span>
+            <span class="service-tag">Pending KYC Clear</span>
         </div>
-        <div class="footer-note">
-            © 2025 RISE UP GROUP | ALL RIGHTS RESERVED
-        </div>
+
+        <div class="section-label">Management</div>
+        <p class="about-para" style="font-weight: 700; color: #1a1a1a;">Akash & Sourabh</p>
+
+        <div class="section-label">Official Support</div>
+        <a href="https://wa.me/918968146117" class="social-link">
+            <i class="fab fa-whatsapp"></i>
+            <span>WhatsApp Business</span>
+        </a>
+        <a href="https://www.instagram.com/riseup_by_akash?igsh=MXE4MmJmNDhyNTAxNQ==" class="social-link">
+            <i class="fab fa-instagram"></i>
+            <span>Instagram Official</span>
+        </a>
+
+        <p style="text-align: center; margin-top: 40px; font-size: 11px; color: #ddd; letter-spacing: 1px;">© 2025 RISE UP GROUP | ALL RIGHTS RESERVED</p>
     </div>
 
 </body>
