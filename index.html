@@ -40,7 +40,7 @@
             100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
         }
 
-        /* --- THE SEAMLESS HEADER (Grow Up Style) --- */
+        /* --- Seamless Header --- */
         .app-header {
             padding: 15px 20px;
             display: flex;
@@ -51,34 +51,18 @@
             z-index: 100;
         }
 
-        .logo-box { 
-            display: flex; 
-            align-items: center; 
-            gap: 12px; 
-            cursor: pointer; 
-        }
-
+        .logo-box { display: flex; align-items: center; gap: 10px; cursor: pointer; }
         .header-logo {
-            width: 45px; /* Size adjusted for transparent PNG */
+            width: 48px;
             height: auto;
-            border: none;
-            outline: none;
-            background: transparent;
             filter: drop-shadow(0 4px 8px rgba(108, 92, 231, 0.2));
             animation: pulseLogo 3s infinite ease-in-out;
         }
-
         @keyframes pulseLogo { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
 
-        .brand-name { 
-            font-size: 30px; 
-            font-weight: 900; 
-            color: #6c5ce7; 
-            letter-spacing: 1.5px; 
-            text-transform: uppercase; 
-        }
+        .brand-name { font-size: 28px; font-weight: 900; color: #6c5ce7; letter-spacing: 1.5px; text-transform: uppercase; }
 
-        /* --- UI Elements --- */
+        /* --- Instruction Box --- */
         .instruction-box {
             margin: 10px 20px;
             background: #6c5ce7;
@@ -86,13 +70,13 @@
             padding: 22px 15px;
             color: white;
             text-align: center;
-            box-shadow: 0 10px 25px rgba(108, 92, 231, 0.3);
+            box-shadow: 0 12px 30px rgba(108, 92, 231, 0.3);
             z-index: 10;
         }
-
         .main-instr { font-size: 14px; font-weight: 800; display: block; margin-bottom: 5px; }
         .sub-instr { font-size: 11px; font-weight: 600; opacity: 0.9; text-transform: uppercase; }
 
+        /* --- Campaign Content --- */
         .campaign-container {
             flex: 1;
             padding: 40px 30px;
@@ -105,14 +89,11 @@
         }
 
         .main-headline {
-            font-size: 48px;
-            font-weight: 900;
-            color: #1a1a1a;
-            line-height: 0.95;
-            margin-bottom: 35px;
-            text-transform: uppercase;
+            font-size: 48px; font-weight: 900; color: #1a1a1a;
+            line-height: 0.95; margin-bottom: 35px; text-transform: uppercase;
         }
 
+        /* --- BUTTON WITH SHINE ANIMATION --- */
         .make-now-btn {
             background: #6c5ce7;
             color: white;
@@ -124,15 +105,25 @@
             font-weight: 700; font-size: 19px;
             display: block;
             box-shadow: 0 15px 35px rgba(108, 92, 231, 0.4);
+            position: relative;
+            overflow: hidden;
             transition: 0.3s;
         }
+
+        .make-now-btn::after {
+            content: ''; position: absolute; top: -50%; left: -100%; width: 50%; height: 200%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(45deg); animation: shine 3s infinite;
+        }
+        @keyframes shine { 0% { left: -100%; } 100% { left: 150%; } }
         .make-now-btn:active { transform: scale(0.95); }
 
+        /* --- Footer Details --- */
         .details-card {
             background: white;
             border-radius: 40px 40px 0 0;
             padding: 45px 25px 30px;
-            box-shadow: 0 -10px 40px rgba(0,0,0,0.03);
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.04);
             z-index: 10;
         }
 
@@ -146,6 +137,13 @@
         .social-btn span { font-size: 15px; font-weight: 700; color: #333; }
         .fa-whatsapp { color: #25D366; }
         .fa-instagram { color: #E1306C; }
+
+        /* --- COPYRIGHT FOOTER --- */
+        .footer-copyright {
+            text-align: center; margin-top: 30px; 
+            font-size: 11px; color: #ccc; 
+            text-transform: uppercase; letter-spacing: 1px;
+        }
     </style>
 </head>
 <body>
@@ -171,7 +169,7 @@
 
     <section class="details-card">
         <span class="label">About Platform</span>
-        <p style="font-size: 13px; color: #666; margin-bottom: 25px;">Rise Up is a professional platform dedicated to digital excellence.</p>
+        <p style="font-size: 13px; color: #666; margin-bottom: 25px; line-height: 1.6;">Rise Up is a professional platform dedicated to empowering individuals through digital excellence.</p>
 
         <span class="label">Connect With Us</span>
         <a href="https://wa.me/918968146117" class="social-btn">
@@ -182,6 +180,8 @@
             <i class="fab fa-instagram"></i>
             <span>Instagram Official</span>
         </a>
+
+        <p class="footer-copyright">© 2025 RISE UP GROUP | ALL RIGHTS RESERVED</p>
     </section>
 
     <script>
