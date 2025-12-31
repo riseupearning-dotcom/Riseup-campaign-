@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rise Up | Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            background: #f8faff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- Same Animated Background --- */
+        .doodle-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at top right, #fce4ec, #e3f2fd, #ffffff);
+        }
+
+        .doodle {
+            position: absolute;
+            color: rgba(108, 92, 231, 0.12);
+            pointer-events: none;
+            animation: floatDoodle 10s linear infinite;
+        }
+
+        @keyframes floatDoodle {
+            0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* --- Header --- */
+        .app-header {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            position: sticky; top: 0; z-index: 100;
+        }
+
+        .logo-box { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+        .header-logo {
+            width: 38px; height: 38px; border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(108, 92, 231, 0.2);
+            animation: pulseLogo 3s infinite ease-in-out;
+        }
+        @keyframes pulseLogo { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        .brand-name { font-size: 26px; font-weight: 900; color: #6c5ce7; letter-spacing: 2px; text-transform: uppercase; }
+
+        /* --- Dashboard UI --- */
+        .container { padding: 20px; padding-bottom: 50px; }
+        .welcome-text { text-align: center; margin-bottom: 25px; }
+        .welcome-text h2 { font-size: 22px; font-weight: 800; color: #1a1a1a; }
+        .welcome-text p { font-size: 13px; color: #888; }
+
+        .category-title {
+            font-size: 15px; font-weight: 800; color: #6c5ce7;
+            margin: 30px 0 15px; display: flex; align-items: center; gap: 8px;
+            text-transform: uppercase;
+        }
+
+        .campaign-card {
+            background: white;
+            padding: 12px 15px;
+            border-radius: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border: 1px solid rgba(108, 92, 231, 0.05);
+        }
+
+        .camp-left { display: flex; align-items: center; gap: 12px; }
+        .camp-logo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; background: #f0f0f0; }
+        .camp-details span { font-size: 14px; font-weight: 700; color: #333; display: block; }
+        .camp-details small { font-size: 11px; color: #2ecc71; font-weight: 600; }
+
+        .btn-group { display: flex; align-items: center; gap: 8px; }
+        .price-tag { font-size: 13px; font-weight: 800; color: #1a1a1a; }
+        
+        .make-btn {
+            background: #6c5ce7;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            border: none;
+            box-shadow: 0 4px 10px rgba(108, 92, 231, 0.2);
+        }
+
+        /* --- Modal Pop-up --- */
+        .modal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.4);
+            display: none; justify-content: center; align-items: center;
+            z-index: 1000; padding: 20px;
+            backdrop-filter: blur(4px);
+        }
+        .modal-content {
+            background: white; width: 100%; max-width: 340px;
+            border-radius: 30px; padding: 30px; text-align: center;
+            position: relative;
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes popIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        
+        .modal-content h3 { font-size: 18px; margin-bottom: 20px; color: #333; }
+        .input-group { margin-bottom: 15px; text-align: left; }
+        .input-group label { font-size: 11px; font-weight: 700; color: #6c5ce7; margin-left: 5px; }
+        .input-group input {
+            width: 100%; padding: 12px; border-radius: 12px;
+            border: 2px solid #f0f0f0; outline: none; margin-top: 5px;
+        }
+
+        .start-btn {
+            background: #6c5ce7; color: white; width: 100%;
+            padding: 15px; border-radius: 15px; font-weight: 700; border: none;
+            margin-top: 10px; cursor: pointer;
+        }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 22px; color: #ccc; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <div class="doodle-bg" id="doodleBg"></div>
+
+    <header class="app-header">
+        <div class="logo-box" onclick="location.href='index.html'">
+            <img src="https://i.ibb.co/N6hV9Z31/IMG-20251231-170337.jpg" alt="Logo" class="header-logo">
+            <span class="brand-name">RISE UP</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="welcome-text">
+            <h2>Best Earning Platform</h2>
+            <p>Start making your account</p>
+        </div>
+
+        <div class="category-title">Demate account ➡️</div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="LINK_LATER"> <div class="camp-details"><span>Angel One</span></div></div> <button class="make-btn" onclick="openModal('Angel One', '#')">MAKE</button></div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="LINK_LATER"> <div class="camp-details"><span>Upstox</span></div></div> <button class="make-btn" onclick="openModal('Upstox', '#')">MAKE</button></div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="LINK_LATER"> <div class="camp-details"><span>Jainam</span></div></div> <button class="make-btn" onclick="openModal('Jainam', '#')">MAKE</button></div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="LINK_LATER"> <div class="camp-details"><span>Mstock</span></div></div> <button class="make-btn" onclick="openModal('Mstock', '#')">MAKE</button></div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="LINK_LATER"> <div class="camp-details"><span>Motilal Oswal</span></div></div> <button class="make-btn" onclick="openModal('Motilal Oswal', '#')">MAKE</button></div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="LINK_LATER"> <div class="camp-details"><span>5 Paise</span></div></div> <button class="make-btn" onclick="openModal('5 Paise', '#')">MAKE</button></div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="LINK_LATER"> <div class="camp-details"><span>Tide</span></div></div> <button class="make-btn" onclick="openModal('Tide', '#')">MAKE</button></div>
+
+        <div class="category-title">Bank account ➡️</div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="LINK_LATER"> <div class="camp-details"><span>Airtel Payment Bank</span></div></div> <button class="make-btn" onclick="openModal('Airtel Bank', '#')">MAKE</button></div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="LINK_LATER"> <div class="camp-details"><span>IDFC First Bank</span></div></div> <button class="make-btn" onclick="openModal('IDFC Bank', '#')">MAKE</button></div>
+
+        <div class="category-title">Credit card ➡️</div>
+        <div class="campaign-card">
+            <div class="camp-left"><img class="camp-logo" src="LINK_LATER"> <div class="camp-details"><span>HDFC Credit Card</span></div></div> 
+            <div class="btn-group"><span class="price-tag">800 RS</span> <button class="make-btn" onclick="openModal('HDFC Card', '#')">MAKE</button></div>
+        </div>
+
+        <div class="category-title">Investment ➡️</div>
+        <div class="campaign-card">
+            <div class="camp-left"><img class="camp-logo" src="LINK_LATER"> <div class="camp-details"><span>Axis Mutual Fund</span></div></div> 
+            <div class="btn-group"><span class="price-tag">200 RS</span> <button class="make-btn" onclick="openModal('Axis MF', '#')">MAKE</button></div>
+        </div>
+        <div class="campaign-card">
+            <div class="camp-left"><img class="camp-logo" src="LINK_LATER"> <div class="camp-details"><span>Appreciate Wealth</span><small>Special Profit</small></div></div> 
+            <div class="btn-group"><span class="price-tag">200 RS</span> <button class="make-btn" onclick="openModal('Appreciate Wealth', '#')">MAKE</button></div>
+        </div>
+    </div>
+
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3 id="modalTitle">Campaign</h3>
+            <div class="input-group"><label>Full Name</label><input type="text" id="userName" placeholder="Name..."></div>
+            <div class="input-group"><label>WhatsApp Number</label><input type="number" id="userPhone" placeholder="Number..."></div>
+            <button class="start-btn" onclick="sendToTelegram()">START NOW</button>
+        </div>
+    </div>
+
+    <script>
+        // Doodles Logic
+        const doodleBg = document.getElementById('doodleBg');
+        for (let i = 0; i < 35; i++) {
+            const icon = document.createElement('i');
+            icon.className = `fas fa-star doodle`;
+            icon.style.left = Math.random() * 100 + 'vw';
+            icon.style.animationDuration = (Math.random() * 5 + 7) + 's';
+            icon.style.animationDelay = (Math.random() * 10) + 's';
+            doodleBg.appendChild(icon);
+        }
+
+        let currentCamp = "", currentLink = "";
+        const token = "8214509136:AAFT6NAiDq0JVinoeVCnztvVQnevE_8gSnQ";
+        const chatId = "8545048108";
+
+        function openModal(n, l) { currentCamp = n; currentLink = l; document.getElementById('modalTitle').innerText = n; document.getElementById('orderModal').style.display = 'flex'; }
+        function closeModal() { document.getElementById('orderModal').style.display = 'none'; }
+
+        function sendToTelegram() {
+            const name = document.getElementById('userName').value;
+            const phone = document.getElementById('userPhone').value;
+            if(!name || !phone) { alert("Details dalo!"); return; }
+
+            const msg = `🚀 *New Lead*%0A👤 *Name:* ${name}%0A📞 *Phone:* ${phone}%0A💼 *Campaign:* ${currentCamp}`;
+            fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${msg}&parse_mode=Markdown`)
+            .then(() => window.location.href = currentLink);
+        }
+    </script>
+</body>
+</html>
