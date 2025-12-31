@@ -11,53 +11,58 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; -webkit-tap-highlight-color: transparent; }
 
         body {
-            /* Wapis Pehle Wala Clean Background */
-            background: radial-gradient(circle at top right, #fce4ec, #e3f2fd, #ffffff);
+            background: #f8faff;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
+            position: relative;
         }
 
-        /* 1. Integrated Animated Header */
+        /* --- Doodle Background Start --- */
+        .doodle-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: radial-gradient(circle at top right, #fce4ec, #e3f2fd, #ffffff);
+        }
+
+        .doodle {
+            position: absolute;
+            color: rgba(108, 92, 231, 0.07); /* Very light color */
+            font-size: 24px;
+            pointer-events: none;
+            animation: floatDoodle 15s linear infinite;
+        }
+
+        @keyframes floatDoodle {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+        /* --- Doodle Background End --- */
+
         .app-header {
             padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
         }
 
-        .logo-box {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            cursor: pointer;
-        }
-
+        .logo-box { display: flex; align-items: center; gap: 12px; cursor: pointer; }
         .header-logo {
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
+            width: 38px; height: 38px; border-radius: 10px;
             box-shadow: 0 4px 12px rgba(108, 92, 231, 0.15);
             animation: pulseLogo 3s infinite ease-in-out;
         }
 
-        @keyframes pulseLogo {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
+        @keyframes pulseLogo { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        .brand-name { font-size: 26px; font-weight: 900; color: #6c5ce7; letter-spacing: 2px; text-transform: uppercase; }
 
-        .brand-name {
-            font-size: 26px;
-            font-weight: 900;
-            color: #6c5ce7;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* 2. ⚠️ Updated Instructions Box */
         .instruction-box {
             margin: 15px 20px;
             background: #6c5ce7;
@@ -66,23 +71,21 @@
             color: white;
             text-align: center;
             box-shadow: 0 12px 30px rgba(108, 92, 231, 0.3);
-            animation: slideDown 0.7s ease-out;
+            z-index: 10;
         }
 
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        .main-instr { font-size: 14px; font-weight: 800; display: block; margin-bottom: 6px; }
+        .sub-instr { font-size: 11px; font-weight: 600; opacity: 0.95; text-transform: uppercase; }
 
-        .main-instr { font-size: 14px; font-weight: 800; display: block; margin-bottom: 6px; letter-spacing: 0.5px; }
-        .sub-instr { font-size: 11px; font-weight: 600; opacity: 0.95; text-transform: uppercase; letter-spacing: 0.8px; }
-
-        /* 3. Campaign Section (No Clipping) */
         .campaign-container {
             flex: 1;
-            padding: 20px 30px; /* Safe Padding to prevent 'N' clipping */
+            padding: 20px 30px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
+            z-index: 10;
         }
 
         .main-headline {
@@ -92,10 +95,8 @@
             line-height: 0.9;
             margin-bottom: 30px;
             text-transform: uppercase;
-            letter-spacing: -2px;
         }
 
-        /* 4. Action Button First */
         .make-now-btn {
             background: #6c5ce7;
             color: white;
@@ -104,64 +105,47 @@
             width: 100%;
             max-width: 340px;
             border-radius: 25px;
-            font-weight: 700;
-            font-size: 19px;
-            display: block;
-            margin-bottom: 18px;
+            font-weight: 700; font-size: 19px;
+            display: block; margin-bottom: 18px;
             box-shadow: 0 15px 35px rgba(108, 92, 231, 0.4);
-            position: relative;
-            overflow: hidden;
+            position: relative; overflow: hidden;
         }
 
         .make-now-btn::after {
-            content: '';
-            position: absolute;
-            top: -50%; left: -100%; width: 50%; height: 200%;
+            content: ''; position: absolute; top: -50%; left: -100%; width: 50%; height: 200%;
             background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
-            transform: rotate(45deg);
-            animation: shine 3s infinite;
+            transform: rotate(45deg); animation: shine 3s infinite;
         }
-
         @keyframes shine { 0% { left: -100%; } 100% { left: 150%; } }
 
         .tagline-niche { font-size: 15px; color: #a0a0a0; font-weight: 600; }
 
-        /* 5. Footer Details */
         .details-card {
             background: white;
             border-radius: 40px 40px 0 0;
             padding: 45px 25px 30px;
             box-shadow: 0 -10px 40px rgba(0,0,0,0.04);
+            z-index: 10;
         }
 
-        .label { color: #6c5ce7; font-size: 13px; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; display: block; letter-spacing: 1px; }
+        .label { color: #6c5ce7; font-size: 13px; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; display: block; }
         .about-txt { font-size: 14px; color: #555; line-height: 1.8; margin-bottom: 30px; }
 
-        .badge-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 35px; }
-        .badge { background: #f4f6ff; padding: 10px 18px; border-radius: 14px; font-size: 12px; font-weight: 600; color: #555; }
-
-        /* Social Links */
         .social-btn {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 18px;
-            background: #fff;
-            border-radius: 22px;
-            margin-bottom: 15px;
-            text-decoration: none;
-            border: 1px solid #f0f0f0;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            display: flex; align-items: center; gap: 15px; padding: 18px;
+            background: #fff; border-radius: 22px; margin-bottom: 15px;
+            text-decoration: none; border: 1px solid #f0f0f0;
         }
         .social-btn i { font-size: 24px; }
         .fa-whatsapp { color: #25D366; }
         .fa-instagram { color: #E1306C; }
         .social-btn span { font-size: 15px; font-weight: 700; color: #333; }
 
-        .copy { text-align: center; margin-top: 35px; font-size: 11px; color: #ccc; letter-spacing: 0.5px; }
     </style>
 </head>
 <body>
+
+    <div class="doodle-bg" id="doodleBg"></div>
 
     <header class="app-header">
         <div class="logo-box" onclick="location.reload();">
@@ -172,30 +156,18 @@
 
     <div class="instruction-box">
         <span class="main-instr">⚠️ MINIMUM 5 CAMPAIGNS REQUIRED</span>
-        <span class="sub-instr">SCREENSHOT SUBMISSION IS MANDATORY TO START YOUR WORK</span>
+        <span class="sub-instr">SCREENSHOT IS MANDATORY TO START YOUR WORK</span>
     </div>
 
     <main class="campaign-container">
         <h1 class="main-headline">MAKE YOUR<br>CAMPAIGN</h1>
-        
         <a href="home.html" class="make-now-btn">MAKE NOW</a>
-        
         <p class="tagline-niche">Rise higher, earn smarter with Rise Up.</p>
     </main>
 
     <section class="details-card">
         <span class="label">About Platform</span>
         <p class="about-txt">Rise Up is a professional platform dedicated to empowering individuals through digital excellence.</p>
-
-        <span class="label">Core Services</span>
-        <div class="badge-row">
-            <span class="badge">Data Entry</span>
-            <span class="badge">Demet</span>
-            <span class="badge">Pending KYC Clear</span>
-        </div>
-
-        <span class="label">Founders</span>
-        <p class="about-txt" style="font-weight: 700; color: #1a1a1a;">Akash & Sourabh</p>
 
         <span class="label">Connect With Us</span>
         <a href="https://wa.me/918968146117" class="social-btn">
@@ -206,9 +178,21 @@
             <i class="fab fa-instagram"></i>
             <span>Instagram Official</span>
         </a>
-
-        <p class="copy">© 2025 RISE UP GROUP | ALL RIGHTS RESERVED</p>
+        <p style="text-align: center; margin-top: 30px; font-size: 11px; color: #ccc;">© 2025 RISE UP GROUP | ALL RIGHTS RESERVED</p>
     </section>
 
+    <script>
+        const doodleBg = document.getElementById('doodleBg');
+        const icons = ['fa-coins', 'fa-arrow-trend-up', 'fa-wallet', 'fa-rocket', 'fa-circle', 'fa-bolt'];
+        
+        for (let i = 0; i < 15; i++) {
+            const icon = document.createElement('i');
+            icon.className = `fas ${icons[Math.floor(Math.random() * icons.length)]} doodle`;
+            icon.style.left = Math.random() * 100 + 'vw';
+            icon.style.animationDelay = Math.random() * 15 + 's';
+            icon.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            doodleBg.appendChild(icon);
+        }
+    </script>
 </body>
 </html>
