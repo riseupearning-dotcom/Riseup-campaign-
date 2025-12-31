@@ -19,50 +19,49 @@
             position: relative;
         }
 
-        /* --- Doodle Background Start --- */
+        /* --- High Density Doodle Background --- */
         .doodle-bg {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
-            overflow: hidden;
             background: radial-gradient(circle at top right, #fce4ec, #e3f2fd, #ffffff);
         }
 
         .doodle {
             position: absolute;
-            color: rgba(108, 92, 231, 0.07); /* Very light color */
-            font-size: 24px;
+            color: rgba(108, 92, 231, 0.12); /* Slightly more visible */
             pointer-events: none;
-            animation: floatDoodle 15s linear infinite;
+            animation: floatDoodle 10s linear infinite; /* Faster animation */
         }
 
         @keyframes floatDoodle {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+            0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
         }
-        /* --- Doodle Background End --- */
 
+        /* --- Header & Branding --- */
         .app-header {
             padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
             background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px);
         }
 
         .logo-box { display: flex; align-items: center; gap: 12px; cursor: pointer; }
         .header-logo {
             width: 38px; height: 38px; border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(108, 92, 231, 0.15);
+            box-shadow: 0 4px 12px rgba(108, 92, 231, 0.2);
             animation: pulseLogo 3s infinite ease-in-out;
         }
 
         @keyframes pulseLogo { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
         .brand-name { font-size: 26px; font-weight: 900; color: #6c5ce7; letter-spacing: 2px; text-transform: uppercase; }
 
+        /* --- ⚠️ Professional Instruction --- */
         .instruction-box {
             margin: 15px 20px;
             background: #6c5ce7;
@@ -77,6 +76,7 @@
         .main-instr { font-size: 14px; font-weight: 800; display: block; margin-bottom: 6px; }
         .sub-instr { font-size: 11px; font-weight: 600; opacity: 0.95; text-transform: uppercase; }
 
+        /* --- Campaign Content --- */
         .campaign-container {
             flex: 1;
             padding: 20px 30px;
@@ -92,7 +92,7 @@
             font-size: 45px;
             font-weight: 900;
             color: #1a1a1a;
-            line-height: 0.9;
+            line-height: 0.95;
             margin-bottom: 30px;
             text-transform: uppercase;
         }
@@ -120,6 +120,7 @@
 
         .tagline-niche { font-size: 15px; color: #a0a0a0; font-weight: 600; }
 
+        /* --- Services/Footer Card --- */
         .details-card {
             background: white;
             border-radius: 40px 40px 0 0;
@@ -183,14 +184,17 @@
 
     <script>
         const doodleBg = document.getElementById('doodleBg');
-        const icons = ['fa-coins', 'fa-arrow-trend-up', 'fa-wallet', 'fa-rocket', 'fa-circle', 'fa-bolt'];
+        const icons = ['fa-coins', 'fa-arrow-trend-up', 'fa-wallet', 'fa-rocket', 'fa-circle', 'fa-bolt', 'fa-star', 'fa-gem'];
         
-        for (let i = 0; i < 15; i++) {
+        // Increased count to 35 for higher density
+        for (let i = 0; i < 35; i++) {
             const icon = document.createElement('i');
             icon.className = `fas ${icons[Math.floor(Math.random() * icons.length)]} doodle`;
             icon.style.left = Math.random() * 100 + 'vw';
-            icon.style.animationDelay = Math.random() * 15 + 's';
-            icon.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            // Varied animation duration for natural feel
+            icon.style.animationDuration = (Math.random() * 5 + 7) + 's';
+            icon.style.animationDelay = (Math.random() * 10) + 's';
+            icon.style.fontSize = (Math.random() * 25 + 12) + 'px';
             doodleBg.appendChild(icon);
         }
     </script>
