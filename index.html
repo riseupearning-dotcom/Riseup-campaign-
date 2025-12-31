@@ -4,226 +4,208 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rise Up | Official</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; -webkit-tap-highlight-color: transparent; }
 
         body {
-            background: linear-gradient(180deg, #f8faff 0%, #ffffff 100%);
+            background: #f8faff;
             min-height: 100vh;
-            color: #333;
+            display: flex;
+            flex-direction: column;
             overflow-x: hidden;
         }
 
-        /* 1. Fully Integrated & Animated Header */
+        /* 1. Integrated Animated Header */
         .app-header {
-            padding: 25px 20px;
+            padding: 20px;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: linear-gradient(to bottom, rgba(108, 92, 231, 0.08), transparent);
+            justify-content: center;
+            background: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.03);
         }
 
-        /* Logo & Name Container */
         .logo-box {
             display: flex;
             align-items: center;
             gap: 12px;
             cursor: pointer;
-            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* Logo Animation: Soft Floating & Pulse */
         .header-logo {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            box-shadow: 0 8px 15px rgba(108, 92, 231, 0.2);
-            animation: logoPulse 3s ease-in-out infinite;
+            width: 35px;
+            height: 35px;
+            border-radius: 8px;
+            animation: pulseLogo 3s infinite;
         }
 
-        @keyframes logoPulse {
-            0%, 100% { transform: translateY(0) scale(1); filter: brightness(1); }
-            50% { transform: translateY(-5px) scale(1.05); filter: brightness(1.1); }
+        @keyframes pulseLogo {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
 
-        /* Brand Name Animation: Neon Glow & Breathe */
         .brand-name {
-            font-size: 26px;
-            font-weight: 800;
-            letter-spacing: 3px;
+            font-size: 24px;
+            font-weight: 900;
             color: #6c5ce7;
-            text-transform: uppercase;
-            position: relative;
-            animation: textBreathe 3s ease-in-out infinite;
+            letter-spacing: 1px;
         }
 
-        @keyframes textBreathe {
-            0%, 100% { opacity: 1; text-shadow: 0 0 8px rgba(108, 92, 231, 0.1); transform: scale(1); }
-            50% { opacity: 0.8; text-shadow: 0 0 20px rgba(108, 92, 231, 0.4); transform: scale(0.98); }
-        }
-
-        /* Click Interaction */
-        .logo-box:active { transform: scale(0.9); }
-
-        /* 2. Dual Instruction Card - Dynamic Slide In */
-        .notice-card {
-            margin: 10px 20px;
+        /* 2. Professional 2-Step Instructions with ⚠️ */
+        .instruction-box {
+            margin: 20px;
             background: #6c5ce7;
+            border-radius: 25px;
+            padding: 20px;
             color: white;
-            padding: 18px;
-            border-radius: 20px;
             text-align: center;
-            box-shadow: 0 15px 35px rgba(108, 92, 231, 0.25);
-            border: 1px solid rgba(255,255,255,0.1);
-            animation: slideInUp 0.8s ease-out;
+            box-shadow: 0 10px 30px rgba(108, 92, 231, 0.3);
+            animation: slideDown 0.6s ease-out;
         }
 
-        @keyframes slideInUp {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 
-        .instruction-1 { font-size: 13px; font-weight: 700; margin-bottom: 6px; display: block; }
-        .instruction-2 { font-size: 10px; font-weight: 500; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.8px; }
+        .instr-item { display: block; margin-bottom: 8px; }
+        .main-instr { font-size: 14px; font-weight: 700; letter-spacing: 0.5px; }
+        .sub-instr { font-size: 11px; font-weight: 500; opacity: 0.9; text-transform: uppercase; }
 
-        /* 3. Main Campaign Content */
-        .campaign-body {
-            padding: 40px 20px;
+        /* 3. Campaign Centerpiece (Fixed Clipping) */
+        .campaign-container {
+            flex: 1;
+            padding: 30px 25px; /* Added side padding to stop clipping */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
         }
 
-        .main-title {
-            font-size: 52px;
+        .main-headline {
+            font-size: 44px; /* Slightly adjusted for mobile fit */
             font-weight: 900;
             color: #1a1a1a;
-            line-height: 0.85;
-            margin-bottom: 35px;
-            letter-spacing: -3px;
-            animation: fadeIn 1s ease-in;
+            line-height: 1;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            width: 100%; /* Ensures it stays in bounds */
         }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        /* 4. Make Now Button - Floating & Glow */
+        /* 4. Make Now Button (Premium) */
         .make-now-btn {
             background: #6c5ce7;
             color: white;
             text-decoration: none;
-            padding: 22px;
-            width: 85%;
-            margin: 0 auto 20px;
-            border-radius: 25px;
+            padding: 20px;
+            width: 100%;
+            max-width: 320px;
+            border-radius: 20px;
             font-weight: 700;
-            font-size: 19px;
+            font-size: 18px;
             display: block;
-            box-shadow: 0 12px 30px rgba(108, 92, 231, 0.4);
+            margin-bottom: 15px;
+            box-shadow: 0 15px 35px rgba(108, 92, 231, 0.4);
             transition: 0.3s;
-            position: relative;
             overflow: hidden;
+            position: relative;
         }
 
         .make-now-btn::after {
             content: '';
             position: absolute;
             top: -50%; left: -50%; width: 200%; height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
             transform: rotate(45deg);
-            animation: shimmer 3s infinite;
+            animation: shine 3s infinite;
         }
 
-        @keyframes shimmer { 0% { left: -100%; } 100% { left: 100%; } }
-        .make-now-btn:active { transform: scale(0.95); box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4); }
+        @keyframes shine { 0% { left: -100%; } 100% { left: 100%; } }
 
-        .tagline { font-size: 15px; color: #a0a0a0; font-weight: 500; }
+        .tagline-niche { font-size: 14px; color: #a0a0a0; font-weight: 500; }
 
-        /* 5. Bottom Services Section - Seamless */
-        .services-section {
-            margin-top: 40px;
-            padding: 35px 25px;
+        /* 5. Services Card Section */
+        .services-card {
             background: white;
-            border-radius: 45px 45px 0 0;
-            box-shadow: 0 -15px 40px rgba(0,0,0,0.04);
+            border-radius: 40px 40px 0 0;
+            padding: 40px 25px;
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.03);
         }
 
-        .section-label { color: #6c5ce7; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 18px; letter-spacing: 1.5px; }
-        .about-para { font-size: 14px; color: #666; line-height: 1.8; margin-bottom: 25px; }
+        .label { color: #6c5ce7; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; display: block; }
+        .about-txt { font-size: 14px; color: #666; line-height: 1.7; margin-bottom: 30px; }
 
-        .tag-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 35px; }
-        .service-tag { background: #f0f2ff; padding: 10px 18px; border-radius: 14px; font-size: 12px; font-weight: 600; color: #555; }
+        .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 30px; }
+        .badge { background: #f0f2ff; padding: 8px 16px; border-radius: 12px; font-size: 12px; font-weight: 600; color: #555; }
 
-        /* Social Links Card Styling */
-        .social-link {
+        /* Social Links */
+        .social-btn {
             display: flex;
             align-items: center;
             gap: 15px;
-            padding: 18px;
-            background: #fff;
-            border-radius: 22px;
-            margin-bottom: 15px;
+            padding: 16px;
+            background: #fafafa;
+            border-radius: 20px;
+            margin-bottom: 12px;
             text-decoration: none;
-            border: 1px solid #f2f2f2;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-            transition: 0.3s;
+            border: 1px solid #eee;
         }
-        .social-link i { font-size: 24px; }
-        .social-link span { font-size: 15px; font-weight: 700; color: #333; }
+        .social-btn i { font-size: 22px; }
+        .social-btn span { font-size: 14px; font-weight: 700; color: #333; }
         .fa-whatsapp { color: #25D366; }
         .fa-instagram { color: #E1306C; }
-        .social-link:active { transform: translateX(10px); background: #fafaff; }
 
     </style>
 </head>
 <body>
 
-    <div class="app-header">
+    <header class="app-header">
         <div class="logo-box" onclick="location.reload();">
             <img src="https://i.ibb.co/N6hV9Z31/IMG-20251231-170337.jpg" alt="Logo" class="header-logo">
             <span class="brand-name">RISE UP</span>
         </div>
+    </header>
+
+    <div class="instruction-box">
+        <div class="instr-item">
+            <span class="main-instr">⚠️ MINIMUM 5 CAMPAIGNS REQUIRED</span>
+        </div>
+        <div class="instr-item">
+            <span class="sub-instr">SCREENSHOT SUBMISSION IS MANDATORY FOR PAYOUT</span>
+        </div>
     </div>
 
-    <div class="notice-card">
-        <span class="instruction-1"><i class="fas fa-shield-check"></i> MINIMUM 5 CAMPAIGNS REQUIRED</span>
-        <span class="instruction-2">Screenshot submission is mandatory for payout</span>
-    </div>
-
-    <div class="campaign-body">
-        <h1 class="main-title">MAKE<br>YOUR<br>CAMPAIGN</h1>
+    <main class="campaign-container">
+        <h1 class="main-headline">MAKE YOUR<br>CAMPAIGN</h1>
         
         <a href="home.html" class="make-now-btn">MAKE NOW</a>
         
-        <p class="tagline">Rise higher, earn smarter with Rise Up.</p>
-    </div>
+        <p class="tagline-niche">Rise higher, earn smarter with Rise Up.</p>
+    </main>
 
-    <div class="services-section">
-        <div class="section-label">Our Story</div>
-        <p class="about-para">Rise Up is a professional platform dedicated to empowering individuals through digital excellence and transparent tasks.</p>
+    <section class="services-card">
+        <span class="label">Our Mission</span>
+        <p class="about-txt">Rise Up is a professional platform dedicated to empowering individuals through digital excellence.</p>
 
-        <div class="section-label">Expertise</div>
-        <div class="tag-row">
-            <span class="service-tag">Data Entry</span>
-            <span class="service-tag">Demet Account</span>
-            <span class="service-tag">Pending KYC Clear</span>
+        <span class="label">Verified Tasks</span>
+        <div class="badge-row">
+            <span class="badge">Data Entry</span>
+            <span class="badge">Demet</span>
+            <span class="badge">Pending KYC Clear</span>
         </div>
 
-        <div class="section-label">Management</div>
-        <p class="about-para" style="font-weight: 700; color: #1a1a1a;">Akash & Sourabh</p>
-
-        <div class="section-label">Official Support</div>
-        <a href="https://wa.me/918968146117" class="social-link">
+        <span class="label">Official Support</span>
+        <a href="https://wa.me/918968146117" class="social-btn">
             <i class="fab fa-whatsapp"></i>
             <span>WhatsApp Business</span>
         </a>
-        <a href="https://www.instagram.com/riseup_by_akash?igsh=MXE4MmJmNDhyNTAxNQ==" class="social-link">
+        <a href="https://www.instagram.com/riseup_by_akash?igsh=MXE4MmJmNDhyNTAxNQ==" class="social-btn">
             <i class="fab fa-instagram"></i>
             <span>Instagram Official</span>
         </a>
 
-        <p style="text-align: center; margin-top: 40px; font-size: 11px; color: #ddd; letter-spacing: 1px;">© 2025 RISE UP GROUP | ALL RIGHTS RESERVED</p>
-    </div>
+        <p style="text-align: center; margin-top: 30px; font-size: 11px; color: #ccc;">© 2025 RISE UP GROUP | ALL RIGHTS RESERVED</p>
+    </section>
 
 </body>
 </html>
