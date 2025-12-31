@@ -19,7 +19,7 @@
             position: relative;
         }
 
-        /* --- Same Animated Background --- */
+        /* --- Doodle Background --- */
         .doodle-bg {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -40,25 +40,36 @@
             100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
         }
 
-        /* --- Header --- */
+        /* --- Seamless Header --- */
         .app-header {
-            padding: 20px;
+            padding: 15px 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
             position: sticky; top: 0; z-index: 100;
+            border-bottom: 1px solid rgba(108, 92, 231, 0.05);
         }
 
-        .logo-box { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+        .logo-box { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+        
         .header-logo {
-            width: 38px; height: 38px; border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(108, 92, 231, 0.2);
+            width: 42px;
+            height: auto;
+            /* Transparent PNG look */
+            filter: drop-shadow(0 4px 6px rgba(108, 92, 231, 0.2));
             animation: pulseLogo 3s infinite ease-in-out;
         }
-        @keyframes pulseLogo { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
-        .brand-name { font-size: 26px; font-weight: 900; color: #6c5ce7; letter-spacing: 2px; text-transform: uppercase; }
+        @keyframes pulseLogo { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+        
+        .brand-name { 
+            font-size: 26px; 
+            font-weight: 900; 
+            color: #6c5ce7; 
+            letter-spacing: 1.5px; 
+            text-transform: uppercase; 
+        }
 
         /* --- Dashboard UI --- */
         .container { padding: 20px; padding-bottom: 50px; }
@@ -85,13 +96,9 @@
         }
 
         .camp-left { display: flex; align-items: center; gap: 12px; }
-        .camp-logo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; background: #f0f0f0; }
+        .camp-logo { width: 42px; height: 42px; border-radius: 12px; object-fit: cover; }
         .camp-details span { font-size: 14px; font-weight: 700; color: #333; display: block; }
-        .camp-details small { font-size: 11px; color: #2ecc71; font-weight: 600; }
 
-        .btn-group { display: flex; align-items: center; gap: 8px; }
-        .price-tag { font-size: 13px; font-weight: 800; color: #1a1a1a; }
-        
         .make-btn {
             background: #6c5ce7;
             color: white;
@@ -101,6 +108,7 @@
             font-weight: 700;
             border: none;
             box-shadow: 0 4px 10px rgba(108, 92, 231, 0.2);
+            cursor: pointer;
         }
 
         /* --- Modal Pop-up --- */
@@ -142,7 +150,7 @@
 
     <header class="app-header">
         <div class="logo-box" onclick="location.href='index.html'">
-            <img src="https://i.ibb.co/N6hV9Z31/IMG-20251231-170337.jpg" alt="Logo" class="header-logo">
+            <img src="https://i.ibb.co/HDXQJshq/23912.png" alt="Logo" class="header-logo">
             <span class="brand-name">RISE UP</span>
         </div>
     </header>
@@ -154,33 +162,22 @@
         </div>
 
         <div class="category-title">Demate account ➡️</div>
-        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="LINK_LATER"> <div class="camp-details"><span>Angel One</span></div></div> <button class="make-btn" onclick="openModal('Angel One', '#')">MAKE</button></div>
-        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="LINK_LATER"> <div class="camp-details"><span>Upstox</span></div></div> <button class="make-btn" onclick="openModal('Upstox', '#')">MAKE</button></div>
-        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="LINK_LATER"> <div class="camp-details"><span>Jainam</span></div></div> <button class="make-btn" onclick="openModal('Jainam', '#')">MAKE</button></div>
-        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="LINK_LATER"> <div class="camp-details"><span>Mstock</span></div></div> <button class="make-btn" onclick="openModal('Mstock', '#')">MAKE</button></div>
-        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="LINK_LATER"> <div class="camp-details"><span>Motilal Oswal</span></div></div> <button class="make-btn" onclick="openModal('Motilal Oswal', '#')">MAKE</button></div>
-        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="LINK_LATER"> <div class="camp-details"><span>5 Paise</span></div></div> <button class="make-btn" onclick="openModal('5 Paise', '#')">MAKE</button></div>
-        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="LINK_LATER"> <div class="camp-details"><span>Tide</span></div></div> <button class="make-btn" onclick="openModal('Tide', '#')">MAKE</button></div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="https://i.ibb.co/twCcbYBT/IMG-20251231-WA0033.jpg"> <div class="camp-details"><span>Angel One</span></div></div> <button class="make-btn" onclick="openModal('Angel One', 'angelone.html')">MAKE</button></div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="https://i.ibb.co/3VRcpxJ/IMG-20251231-WA0035.jpg"> <div class="camp-details"><span>Upstox</span></div></div> <button class="make-btn" onclick="openModal('Upstox', 'upstox.html')">MAKE</button></div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="https://i.ibb.co/V0b472XX/IMG-20251231-WA0049.jpg"> <div class="camp-details"><span>Jainam</span></div></div> <button class="make-btn" onclick="openModal('Jainam', 'jainam.html')">MAKE</button></div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="https://i.ibb.co/6JHwpsCW/IMG-20251231-WA0051.jpg"> <div class="camp-details"><span>Mstock</span></div></div> <button class="make-btn" onclick="openModal('Mstock', 'mstock.html')">MAKE</button></div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="https://i.ibb.co/G4vXzcdQ/IMG-20251231-WA0037.jpg"> <div class="camp-details"><span>Motilal Oswal</span></div></div> <button class="make-btn" onclick="openModal('Motilal Oswal', 'motilal.html')">MAKE</button></div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="https://i.ibb.co/9kKXmj4W/IMG-20251231-WA0038.jpg"> <div class="camp-details"><span>5 Paise</span></div></div> <button class="make-btn" onclick="openModal('5 Paise', '5paise.html')">MAKE</button></div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="https://i.ibb.co/B11hwHr/IMG-20251231-WA0052.jpg"> <div class="camp-details"><span>Tide</span></div></div> <button class="make-btn" onclick="openModal('Tide', 'tide.html')">MAKE</button></div>
 
         <div class="category-title">Bank account ➡️</div>
-        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="LINK_LATER"> <div class="camp-details"><span>Airtel Payment Bank</span></div></div> <button class="make-btn" onclick="openModal('Airtel Bank', '#')">MAKE</button></div>
-        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="LINK_LATER"> <div class="camp-details"><span>IDFC First Bank</span></div></div> <button class="make-btn" onclick="openModal('IDFC Bank', '#')">MAKE</button></div>
-
-        <div class="category-title">Credit card ➡️</div>
-        <div class="campaign-card">
-            <div class="camp-left"><img class="camp-logo" src="LINK_LATER"> <div class="camp-details"><span>HDFC Credit Card</span></div></div> 
-            <div class="btn-group"><span class="price-tag">800 RS</span> <button class="make-btn" onclick="openModal('HDFC Card', '#')">MAKE</button></div>
-        </div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="https://i.ibb.co/pBcQYsrG/IMG-20251231-WA0039.jpg"> <div class="camp-details"><span>Airtel Bank</span></div></div> <button class="make-btn" onclick="openModal('Airtel Bank', 'airtelbank.html')">MAKE</button></div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="https://i.ibb.co/fGkJSrwQ/IMG-20251231-WA0040.jpg"> <div class="camp-details"><span>IDFC Bank</span></div></div> <button class="make-btn" onclick="openModal('IDFC Bank', 'idfcbank.html')">MAKE</button></div>
 
         <div class="category-title">Investment ➡️</div>
-        <div class="campaign-card">
-            <div class="camp-left"><img class="camp-logo" src="LINK_LATER"> <div class="camp-details"><span>Axis Mutual Fund</span></div></div> 
-            <div class="btn-group"><span class="price-tag">200 RS</span> <button class="make-btn" onclick="openModal('Axis MF', '#')">MAKE</button></div>
-        </div>
-        <div class="campaign-card">
-            <div class="camp-left"><img class="camp-logo" src="LINK_LATER"> <div class="camp-details"><span>Appreciate Wealth</span><small>Special Profit</small></div></div> 
-            <div class="btn-group"><span class="price-tag">200 RS</span> <button class="make-btn" onclick="openModal('Appreciate Wealth', '#')">MAKE</button></div>
-        </div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="https://i.ibb.co/KcgLMQQC/IMG-20251231-WA0041.jpg"> <div class="camp-details"><span>Axis Mutual Fund</span></div></div> <button class="make-btn" onclick="openModal('Axis MF', 'axismf.html')">MAKE</button></div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="https://i.ibb.co/kV8X89wr/IMG-20251231-WA0042.jpg"> <div class="camp-details"><span>Appreciate Wealth</span></div></div> <button class="make-btn" onclick="openModal('Appreciate', 'appreciate.html')">MAKE</button></div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="https://i.ibb.co/WN8n0s2d/IMG-20251231-WA0043.jpg"> <div class="camp-details"><span>Airtel Fiber</span></div></div> <button class="make-btn" onclick="openModal('Airtel Fiber', 'fiber.html')">MAKE</button></div>
     </div>
 
     <div class="modal" id="orderModal">
@@ -194,7 +191,6 @@
     </div>
 
     <script>
-        // Doodles Logic
         const doodleBg = document.getElementById('doodleBg');
         for (let i = 0; i < 35; i++) {
             const icon = document.createElement('i');
@@ -223,4 +219,5 @@
         }
     </script>
 </body>
-</html>
+    </html>
+    
