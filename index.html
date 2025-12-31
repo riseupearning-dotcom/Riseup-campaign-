@@ -19,7 +19,7 @@
             position: relative;
         }
 
-        /* --- High Density Doodle Background --- */
+        /* --- Doodle Background --- */
         .doodle-bg {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -37,61 +37,66 @@
         @keyframes floatDoodle {
             0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
             20% { opacity: 1; }
-            80% { opacity: 1; }
             100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
         }
 
-        /* --- Professional Seamless Header --- */
+        /* --- THE FIXED SEAMLESS HEADER --- */
         .app-header {
             padding: 15px 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid rgba(108, 92, 231, 0.05);
+            background: transparent; /* Ekdam saaf background */
+            position: relative;
+            z-index: 100;
         }
 
-        .logo-box { display: flex; align-items: center; gap: 10px; cursor: pointer; }
-        
+        .logo-box { 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            cursor: pointer; 
+        }
+
         .header-logo {
-            width: 45px;
+            width: 48px; /* Thoda bada look */
             height: auto;
-            border-radius: 0; /* Box hata diya */
-            box-shadow: none; /* Shadow hata di */
-            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1));
-            animation: pulseLogo 3s infinite ease-in-out;
+            /* YE HAI MAGIC: Ye white background ko remove karke blend karega */
+            mix-blend-mode: multiply; 
+            display: block;
+            border: none;
+            box-shadow: none;
+            outline: none;
         }
 
-        @keyframes pulseLogo { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
-        
         .brand-name { 
-            font-size: 26px; 
+            font-size: 28px; 
             font-weight: 900; 
             color: #6c5ce7; 
             letter-spacing: 1.5px; 
             text-transform: uppercase; 
+            text-shadow: 0 2px 10px rgba(108, 92, 231, 0.1);
         }
 
-        /* --- Professional Instruction --- */
+        /* --- Instruction Box --- */
         .instruction-box {
-            margin: 15px 20px;
+            margin: 10px 20px;
             background: #6c5ce7;
-            border-radius: 25px;
-            padding: 22px 15px;
+            border-radius: 20px;
+            padding: 20px 15px;
             color: white;
             text-align: center;
-            box-shadow: 0 12px 30px rgba(108, 92, 231, 0.3);
+            box-shadow: 0 10px 25px rgba(108, 92, 231, 0.3);
             z-index: 10;
         }
 
-        .main-instr { font-size: 14px; font-weight: 800; display: block; margin-bottom: 6px; }
-        .sub-instr { font-size: 11px; font-weight: 600; opacity: 0.95; text-transform: uppercase; }
+        .main-instr { font-size: 14px; font-weight: 800; display: block; margin-bottom: 4px; }
+        .sub-instr { font-size: 11px; font-weight: 600; opacity: 0.9; text-transform: uppercase; }
 
-        /* --- Campaign Content --- */
+        /* --- Campaign Section --- */
         .campaign-container {
             flex: 1;
-            padding: 20px 30px;
+            padding: 40px 30px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -101,11 +106,11 @@
         }
 
         .main-headline {
-            font-size: 45px;
+            font-size: 48px;
             font-weight: 900;
             color: #1a1a1a;
-            line-height: 0.95;
-            margin-bottom: 30px;
+            line-height: 0.9;
+            margin-bottom: 35px;
             text-transform: uppercase;
         }
 
@@ -115,44 +120,35 @@
             text-decoration: none;
             padding: 22px;
             width: 100%;
-            max-width: 340px;
+            max-width: 320px;
             border-radius: 25px;
             font-weight: 700; font-size: 19px;
-            display: block; margin-bottom: 18px;
+            display: block;
             box-shadow: 0 15px 35px rgba(108, 92, 231, 0.4);
-            position: relative; overflow: hidden;
+            transition: 0.3s;
         }
+        .make-now-btn:active { transform: scale(0.95); }
 
-        .make-now-btn::after {
-            content: ''; position: absolute; top: -50%; left: -100%; width: 50%; height: 200%;
-            background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
-            transform: rotate(45deg); animation: shine 3s infinite;
-        }
-        @keyframes shine { 0% { left: -100%; } 100% { left: 150%; } }
-
-        .tagline-niche { font-size: 15px; color: #a0a0a0; font-weight: 600; }
-
-        /* --- Footer Card --- */
+        /* --- Footer Details --- */
         .details-card {
             background: white;
             border-radius: 40px 40px 0 0;
-            padding: 45px 25px 30px;
-            box-shadow: 0 -10px 40px rgba(0,0,0,0.04);
+            padding: 40px 25px 30px;
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.03);
             z-index: 10;
         }
 
-        .label { color: #6c5ce7; font-size: 13px; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; display: block; }
-        .about-txt { font-size: 14px; color: #555; line-height: 1.8; margin-bottom: 30px; }
+        .label { color: #6c5ce7; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; display: block; }
+        .about-txt { font-size: 13px; color: #666; line-height: 1.7; margin-bottom: 25px; }
 
         .social-btn {
-            display: flex; align-items: center; gap: 15px; padding: 18px;
-            background: #fff; border-radius: 22px; margin-bottom: 15px;
-            text-decoration: none; border: 1px solid #f0f0f0;
+            display: flex; align-items: center; gap: 15px; padding: 16px;
+            background: #f9f9fb; border-radius: 20px; margin-bottom: 12px;
+            text-decoration: none; border: 1px solid #eee;
         }
-        .social-btn i { font-size: 24px; }
+        .social-btn span { font-size: 14px; font-weight: 700; color: #333; }
         .fa-whatsapp { color: #25D366; }
         .fa-instagram { color: #E1306C; }
-        .social-btn span { font-size: 15px; font-weight: 700; color: #333; }
 
     </style>
 </head>
@@ -169,13 +165,12 @@
 
     <div class="instruction-box">
         <span class="main-instr">⚠️ MINIMUM 5 CAMPAIGNS REQUIRED</span>
-        <span class="sub-instr">SCREENSHOT IS MANDATORY FOR PAYOUT</span>
+        <span class="sub-instr">SCREENSHOT SUBMISSION IS MANDATORY FOR PAYOUT</span>
     </div>
 
     <main class="campaign-container">
         <h1 class="main-headline">MAKE YOUR<br>CAMPAIGN</h1>
         <a href="home.html" class="make-now-btn">MAKE NOW</a>
-        <p class="tagline-niche">Rise higher, earn smarter with Rise Up.</p>
     </main>
 
     <section class="details-card">
@@ -187,24 +182,23 @@
             <i class="fab fa-whatsapp"></i>
             <span>WhatsApp Business</span>
         </a>
-        <a href="https://www.instagram.com/riseup_by_akash?igsh=MXE4MmJmNDhyNTAxNQ==" class="social-btn">
+        <a href="https://www.instagram.com/riseup_by_akash" class="social-btn">
             <i class="fab fa-instagram"></i>
             <span>Instagram Official</span>
         </a>
-        <p style="text-align: center; margin-top: 30px; font-size: 11px; color: #ccc;">© 2025 RISE UP GROUP | ALL RIGHTS RESERVED</p>
+        <p style="text-align: center; margin-top: 20px; font-size: 10px; color: #bbb;">© 2025 RISE UP GROUP | ALL RIGHTS RESERVED</p>
     </section>
 
     <script>
         const doodleBg = document.getElementById('doodleBg');
-        const icons = ['fa-coins', 'fa-arrow-trend-up', 'fa-wallet', 'fa-rocket', 'fa-circle', 'fa-bolt', 'fa-star', 'fa-gem'];
-        
+        const icons = ['fa-coins', 'fa-arrow-trend-up', 'fa-wallet', 'fa-rocket', 'fa-star'];
         for (let i = 0; i < 35; i++) {
             const icon = document.createElement('i');
             icon.className = `fas ${icons[Math.floor(Math.random() * icons.length)]} doodle`;
             icon.style.left = Math.random() * 100 + 'vw';
             icon.style.animationDuration = (Math.random() * 5 + 7) + 's';
             icon.style.animationDelay = (Math.random() * 10) + 's';
-            icon.style.fontSize = (Math.random() * 25 + 12) + 'px';
+            icon.style.fontSize = (Math.random() * 20 + 12) + 'px';
             doodleBg.appendChild(icon);
         }
     </script>
