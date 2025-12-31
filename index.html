@@ -19,7 +19,7 @@
             position: relative;
         }
 
-        /* --- Doodle Background --- */
+        /* --- Doodle Background (Same as Index) --- */
         .doodle-bg {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -40,13 +40,13 @@
             100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
         }
 
-        /* --- THE FIXED SEAMLESS HEADER --- */
+        /* --- THE SEAMLESS HEADER (Grow Up Style) --- */
         .app-header {
             padding: 15px 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: transparent; /* Ekdam saaf background */
+            background: transparent; /* No white box background */
             position: relative;
             z-index: 100;
         }
@@ -54,46 +54,45 @@
         .logo-box { 
             display: flex; 
             align-items: center; 
-            gap: 8px; 
+            gap: 12px; 
             cursor: pointer; 
         }
 
         .header-logo {
-            width: 48px; /* Thoda bada look */
+            width: 50px; /* Perfect balance size */
             height: auto;
-            /* YE HAI MAGIC: Ye white background ko remove karke blend karega */
-            mix-blend-mode: multiply; 
-            display: block;
             border: none;
-            box-shadow: none;
             outline: none;
+            background: transparent;
+            /* Ab koi blend mode ki zarurat nahi agar PNG transparent hai */
+            animation: pulseLogo 3s infinite ease-in-out;
         }
 
+        @keyframes pulseLogo { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+
         .brand-name { 
-            font-size: 28px; 
+            font-size: 30px; 
             font-weight: 900; 
             color: #6c5ce7; 
             letter-spacing: 1.5px; 
             text-transform: uppercase; 
-            text-shadow: 0 2px 10px rgba(108, 92, 231, 0.1);
         }
 
-        /* --- Instruction Box --- */
+        /* --- Rest of the UI --- */
         .instruction-box {
             margin: 10px 20px;
             background: #6c5ce7;
-            border-radius: 20px;
-            padding: 20px 15px;
+            border-radius: 25px;
+            padding: 22px 15px;
             color: white;
             text-align: center;
             box-shadow: 0 10px 25px rgba(108, 92, 231, 0.3);
             z-index: 10;
         }
 
-        .main-instr { font-size: 14px; font-weight: 800; display: block; margin-bottom: 4px; }
+        .main-instr { font-size: 14px; font-weight: 800; display: block; margin-bottom: 5px; }
         .sub-instr { font-size: 11px; font-weight: 600; opacity: 0.9; text-transform: uppercase; }
 
-        /* --- Campaign Section --- */
         .campaign-container {
             flex: 1;
             padding: 40px 30px;
@@ -109,7 +108,7 @@
             font-size: 48px;
             font-weight: 900;
             color: #1a1a1a;
-            line-height: 0.9;
+            line-height: 0.95;
             margin-bottom: 35px;
             text-transform: uppercase;
         }
@@ -125,31 +124,24 @@
             font-weight: 700; font-size: 19px;
             display: block;
             box-shadow: 0 15px 35px rgba(108, 92, 231, 0.4);
-            transition: 0.3s;
         }
-        .make-now-btn:active { transform: scale(0.95); }
 
-        /* --- Footer Details --- */
         .details-card {
             background: white;
             border-radius: 40px 40px 0 0;
-            padding: 40px 25px 30px;
+            padding: 45px 25px 30px;
             box-shadow: 0 -10px 40px rgba(0,0,0,0.03);
             z-index: 10;
         }
 
-        .label { color: #6c5ce7; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; display: block; }
-        .about-txt { font-size: 13px; color: #666; line-height: 1.7; margin-bottom: 25px; }
-
+        .label { color: #6c5ce7; font-size: 13px; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; display: block; }
+        
         .social-btn {
-            display: flex; align-items: center; gap: 15px; padding: 16px;
-            background: #f9f9fb; border-radius: 20px; margin-bottom: 12px;
-            text-decoration: none; border: 1px solid #eee;
+            display: flex; align-items: center; gap: 15px; padding: 18px;
+            background: #f9f9fb; border-radius: 22px; margin-bottom: 12px;
+            text-decoration: none; border: 1px solid #f0f0f0;
         }
-        .social-btn span { font-size: 14px; font-weight: 700; color: #333; }
-        .fa-whatsapp { color: #25D366; }
-        .fa-instagram { color: #E1306C; }
-
+        .social-btn span { font-size: 15px; font-weight: 700; color: #333; }
     </style>
 </head>
 <body>
@@ -175,29 +167,27 @@
 
     <section class="details-card">
         <span class="label">About Platform</span>
-        <p class="about-txt">Rise Up is a professional platform dedicated to empowering individuals through digital excellence.</p>
+        <p style="font-size: 13px; color: #666; margin-bottom: 25px;">Rise Up is a professional platform dedicated to digital excellence.</p>
 
         <span class="label">Connect With Us</span>
         <a href="https://wa.me/918968146117" class="social-btn">
-            <i class="fab fa-whatsapp"></i>
+            <i class="fab fa-whatsapp" style="color:#25D366; font-size: 24px;"></i>
             <span>WhatsApp Business</span>
         </a>
         <a href="https://www.instagram.com/riseup_by_akash" class="social-btn">
-            <i class="fab fa-instagram"></i>
+            <i class="fab fa-instagram" style="color:#E1306C; font-size: 24px;"></i>
             <span>Instagram Official</span>
         </a>
-        <p style="text-align: center; margin-top: 20px; font-size: 10px; color: #bbb;">© 2025 RISE UP GROUP | ALL RIGHTS RESERVED</p>
     </section>
 
     <script>
         const doodleBg = document.getElementById('doodleBg');
-        const icons = ['fa-coins', 'fa-arrow-trend-up', 'fa-wallet', 'fa-rocket', 'fa-star'];
+        const icons = ['fa-coins', 'fa-bolt', 'fa-star', 'fa-rocket'];
         for (let i = 0; i < 35; i++) {
             const icon = document.createElement('i');
             icon.className = `fas ${icons[Math.floor(Math.random() * icons.length)]} doodle`;
             icon.style.left = Math.random() * 100 + 'vw';
             icon.style.animationDuration = (Math.random() * 5 + 7) + 's';
-            icon.style.animationDelay = (Math.random() * 10) + 's';
             icon.style.fontSize = (Math.random() * 20 + 12) + 'px';
             doodleBg.appendChild(icon);
         }
