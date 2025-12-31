@@ -3,156 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rise Up | Rise Higher, Earn Smarter</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+    <title>Rise Up | Professional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
         body {
+            background: radial-gradient(circle at top right, #fce4ec, #e3f2fd, #ffffff);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #ffffff);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            align-items: center;
             overflow-x: hidden;
         }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .alert-bar {
-            background: #ffcc00;
-            color: #000;
+        /* 1. Logo Section (Sabse Pehle) */
+        .logo-header {
+            margin-top: 40px;
             text-align: center;
-            padding: 10px 20px;
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            animation: logoFadeIn 1.5s ease;
         }
 
-        header { padding: 20px 5%; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); }
-        .logo { font-size: 28px; font-weight: 900; color: #fff; letter-spacing: 1px; }
-
-        .hero {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 40px 20px;
+        .main-logo {
+            width: 180px; /* Logo Size */
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            /* Logo Movement Animation */
+            animation: logoFloat 4s ease-in-out infinite;
         }
 
-        .hero-img {
-            width: 250px;
-            margin-bottom: 25px;
-            animation: float 6s ease-in-out infinite;
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-10px) scale(1.02); }
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+        @keyframes logoFadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .hero h1 {
-            font-size: clamp(36px, 5vw, 60px);
-            font-weight: 800;
-            color: #fff;
-            text-transform: uppercase;
-            margin-bottom: 30px;
-        }
-
-        .cta-button {
-            background: #fff;
-            color: #333;
-            padding: 18px 45px;
-            font-size: 18px;
-            font-weight: 700;
-            text-decoration: none;
+        /* 2. Stylish Alert Capsule */
+        .alert-capsule {
+            margin-top: 25px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
             border-radius: 50px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            transition: 0.3s;
+            border: 1px solid rgba(108, 92, 231, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+
+        .pulse-dot { height: 8px; width: 8px; background: #6c5ce7; border-radius: 50%; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+
+        /* 3. Main Action Card */
+        .hero-card {
+            margin-top: 35px;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            padding: 40px 30px;
+            border-radius: 40px;
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.8);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+        }
+
+        h1 { font-size: 42px; font-weight: 900; color: #2d3436; line-height: 1; margin-bottom: 25px; letter-spacing: -1px; }
+
+        .start-button {
+            background: #6c5ce7;
+            color: white;
+            text-decoration: none;
+            padding: 18px 45px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 16px;
+            display: inline-block;
+            transition: 0.4s;
             text-transform: uppercase;
+            box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
         }
 
-        .cta-button:hover { transform: translateY(-5px); background: #2c3e50; color: #fff; }
+        .start-button:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(108, 92, 231, 0.5); }
 
+        /* 4. Footer */
         footer {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 40px 5%;
-            border-top-left-radius: 30px;
-            border-top-right-radius: 30px;
+            width: 100%;
+            margin-top: 60px;
+            background: #ffffff;
+            padding: 50px 25px;
+            border-radius: 50px 50px 0 0;
         }
 
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-col h3 { color: #2c3e50; margin-bottom: 15px; font-size: 18px; }
-        .footer-col p, .footer-col li, .footer-col a {
-            font-size: 14px; color: #555; line-height: 1.8; text-decoration: none; display: block;
-        }
-
-        .footer-col a:hover { color: #e73c7e; }
-
-        .founder-names { font-weight: 700; color: #333; }
+        .footer-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
+        h4 { font-size: 15px; color: #6c5ce7; margin-bottom: 15px; text-transform: uppercase; }
+        p, a { font-size: 13px; color: #636e72; text-decoration: none; line-height: 1.8; }
+        .tag { background: #f1f2f6; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 700; color: #2d3436; margin-right: 5px; }
     </style>
 </head>
 <body>
 
-    <div class="alert-bar">
-        ⚠️ IMPORTANT: MINIMUM 5 CAMPAIGNS REQUIRED TO PROCEED
+    <div class="logo-header">
+        <img src="https://i.ibb.co/N6hV9Z31/IMG-20251231-170337.jpg" alt="Rise Up Logo" class="main-logo">
     </div>
 
-    <header>
-        <div class="logo">Rise Up.</div>
-    </header>
+    <div class="alert-capsule">
+        <div class="pulse-dot"></div>
+        <span style="font-size: 11px; font-weight: 700; color: #555;">MINIMUM 5 CAMPAIGNS REQUIRED</span>
+    </div>
 
-    <section class="hero">
-        <img src="https://cdni.iconscout.com/illustration/premium/thumb/business-growth-illustration-download-in-svg-png-gif-file-formats--investment-logo-profit-increase-stats-pack-finance-illustrations-4028373.png" alt="Rise Up" class="hero-img">
+    <div class="hero-card">
         <h1>MAKE YOUR<br>CAMPAIGN</h1>
-        <a href="home.html" class="cta-button">Click Here To Join</a>
-    </section>
+        <p style="margin-bottom: 30px; color: #b2bec3; font-size: 14px;">Rise higher, earn smarter with Rise Up.</p>
+        <a href="home.html" class="start-button">Start Now</a>
+    </div>
 
     <footer>
         <div class="footer-grid">
-            <div class="footer-col">
-                <h3>About Us</h3>
-                <p>Rise Up is a professional platform designed to empower individuals through transparent digital tasks and financial growth opportunities.</p>
+            <div>
+                <h4>About Us</h4>
+                <p>Rise Up is a professional platform dedicated to empowering individuals through digital tasks.</p>
             </div>
-            <div class="footer-col">
-                <h3>Our Work</h3>
-                <p>• Data Entry Projects</p>
-                <p>• Demat Account Opening</p>
-                <p>• Pending KYC Clearance</p>
+            <div>
+                <h4>Services</h4>
+                <div style="margin-top: 10px;">
+                    <span class="tag">Data Entry</span>
+                    <span class="tag">Demet</span>
+                    <span class="tag">KYC Task</span>
+                </div>
             </div>
-            <div class="footer-col">
-                <h3>Management</h3>
-                <p class="founder-names">Mr. Akash (Founder)</p>
-                <p class="founder-names">Mr. Sourabh (Co-Founder)</p>
+            <div>
+                <h4>Founders</h4>
+                <p><strong>Akash</strong> & <strong>Sourabh</strong></p>
             </div>
-            <div class="footer-col">
-                <h3>Connect</h3>
-                <a href="https://wa.me/918968146117" target="_blank"><i class="fab fa-whatsapp"></i> 8968146117</a>
-                <a href="https://www.instagram.com/riseup_by_akash?igsh=MXE4MmJmNDhyNTAxNQ==" target="_blank"><i class="fab fa-instagram"></i> @riseup_by_akash</a>
+            <div>
+                <h4>Connect</h4>
+                <a href="https://wa.me/918968146117" style="font-weight: 700; color: #6c5ce7;">WhatsApp Support</a><br>
+                <a href="https://www.instagram.com/riseup_by_akash">Instagram Official</a>
             </div>
         </div>
-        <div style="text-align: center; margin-top: 30px; font-size: 12px; color: #999;">
-            &copy; 2025 RISE UP GROUP. All Rights Reserved.
-        </div>
+        <p style="text-align: center; margin-top: 40px; font-size: 11px; color: #ccc;">© 2025 RISE UP GROUP | ALL RIGHTS RESERVED</p>
     </footer>
 
 </body>
