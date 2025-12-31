@@ -19,7 +19,7 @@
             position: relative;
         }
 
-        /* --- Doodle Background (Same as Index) --- */
+        /* --- Doodle Background --- */
         .doodle-bg {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -46,7 +46,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: transparent; /* No white box background */
+            background: transparent;
             position: relative;
             z-index: 100;
         }
@@ -59,16 +59,16 @@
         }
 
         .header-logo {
-            width: 50px; /* Perfect balance size */
+            width: 45px; /* Size adjusted for transparent PNG */
             height: auto;
             border: none;
             outline: none;
             background: transparent;
-            /* Ab koi blend mode ki zarurat nahi agar PNG transparent hai */
+            filter: drop-shadow(0 4px 8px rgba(108, 92, 231, 0.2));
             animation: pulseLogo 3s infinite ease-in-out;
         }
 
-        @keyframes pulseLogo { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+        @keyframes pulseLogo { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
 
         .brand-name { 
             font-size: 30px; 
@@ -78,7 +78,7 @@
             text-transform: uppercase; 
         }
 
-        /* --- Rest of the UI --- */
+        /* --- UI Elements --- */
         .instruction-box {
             margin: 10px 20px;
             background: #6c5ce7;
@@ -124,7 +124,9 @@
             font-weight: 700; font-size: 19px;
             display: block;
             box-shadow: 0 15px 35px rgba(108, 92, 231, 0.4);
+            transition: 0.3s;
         }
+        .make-now-btn:active { transform: scale(0.95); }
 
         .details-card {
             background: white;
@@ -142,6 +144,8 @@
             text-decoration: none; border: 1px solid #f0f0f0;
         }
         .social-btn span { font-size: 15px; font-weight: 700; color: #333; }
+        .fa-whatsapp { color: #25D366; }
+        .fa-instagram { color: #E1306C; }
     </style>
 </head>
 <body>
@@ -150,7 +154,7 @@
 
     <header class="app-header">
         <div class="logo-box" onclick="location.reload();">
-            <img src="https://i.ibb.co/N6hV9Z31/IMG-20251231-170337.jpg" alt="Rise Up" class="header-logo">
+            <img src="https://i.ibb.co/HDXQJshq/23912.png" alt="Rise Up" class="header-logo">
             <span class="brand-name">RISE UP</span>
         </div>
     </header>
@@ -171,11 +175,11 @@
 
         <span class="label">Connect With Us</span>
         <a href="https://wa.me/918968146117" class="social-btn">
-            <i class="fab fa-whatsapp" style="color:#25D366; font-size: 24px;"></i>
+            <i class="fab fa-whatsapp"></i>
             <span>WhatsApp Business</span>
         </a>
         <a href="https://www.instagram.com/riseup_by_akash" class="social-btn">
-            <i class="fab fa-instagram" style="color:#E1306C; font-size: 24px;"></i>
+            <i class="fab fa-instagram"></i>
             <span>Instagram Official</span>
         </a>
     </section>
