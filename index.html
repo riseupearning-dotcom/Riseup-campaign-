@@ -11,7 +11,8 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; -webkit-tap-highlight-color: transparent; }
 
         body {
-            background: #f8faff;
+            /* Wapis Pehle Wala Clean Background */
+            background: radial-gradient(circle at top right, #fce4ec, #e3f2fd, #ffffff);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -23,8 +24,9 @@
             padding: 20px;
             display: flex;
             justify-content: center;
-            background: white;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.03);
+            align-items: center;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
         }
 
         .logo-box {
@@ -35,10 +37,11 @@
         }
 
         .header-logo {
-            width: 35px;
-            height: 35px;
-            border-radius: 8px;
-            animation: pulseLogo 3s infinite;
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(108, 92, 231, 0.15);
+            animation: pulseLogo 3s infinite ease-in-out;
         }
 
         @keyframes pulseLogo {
@@ -47,34 +50,34 @@
         }
 
         .brand-name {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 900;
             color: #6c5ce7;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
-        /* 2. Professional 2-Step Instructions with ⚠️ */
+        /* 2. ⚠️ Updated Instructions Box */
         .instruction-box {
-            margin: 20px;
+            margin: 15px 20px;
             background: #6c5ce7;
             border-radius: 25px;
-            padding: 20px;
+            padding: 22px 15px;
             color: white;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(108, 92, 231, 0.3);
-            animation: slideDown 0.6s ease-out;
+            box-shadow: 0 12px 30px rgba(108, 92, 231, 0.3);
+            animation: slideDown 0.7s ease-out;
         }
 
         @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 
-        .instr-item { display: block; margin-bottom: 8px; }
-        .main-instr { font-size: 14px; font-weight: 700; letter-spacing: 0.5px; }
-        .sub-instr { font-size: 11px; font-weight: 500; opacity: 0.9; text-transform: uppercase; }
+        .main-instr { font-size: 14px; font-weight: 800; display: block; margin-bottom: 6px; letter-spacing: 0.5px; }
+        .sub-instr { font-size: 11px; font-weight: 600; opacity: 0.95; text-transform: uppercase; letter-spacing: 0.8px; }
 
-        /* 3. Campaign Centerpiece (Fixed Clipping) */
+        /* 3. Campaign Section (No Clipping) */
         .campaign-container {
             flex: 1;
-            padding: 30px 25px; /* Added side padding to stop clipping */
+            padding: 20px 30px; /* Safe Padding to prevent 'N' clipping */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -83,96 +86,93 @@
         }
 
         .main-headline {
-            font-size: 44px; /* Slightly adjusted for mobile fit */
+            font-size: 45px;
             font-weight: 900;
             color: #1a1a1a;
-            line-height: 1;
+            line-height: 0.9;
             margin-bottom: 30px;
             text-transform: uppercase;
-            width: 100%; /* Ensures it stays in bounds */
+            letter-spacing: -2px;
         }
 
-        /* 4. Make Now Button (Premium) */
+        /* 4. Action Button First */
         .make-now-btn {
             background: #6c5ce7;
             color: white;
             text-decoration: none;
-            padding: 20px;
+            padding: 22px;
             width: 100%;
-            max-width: 320px;
-            border-radius: 20px;
+            max-width: 340px;
+            border-radius: 25px;
             font-weight: 700;
-            font-size: 18px;
+            font-size: 19px;
             display: block;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             box-shadow: 0 15px 35px rgba(108, 92, 231, 0.4);
-            transition: 0.3s;
-            overflow: hidden;
             position: relative;
+            overflow: hidden;
         }
 
         .make-now-btn::after {
             content: '';
             position: absolute;
-            top: -50%; left: -50%; width: 200%; height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            top: -50%; left: -100%; width: 50%; height: 200%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
             transform: rotate(45deg);
             animation: shine 3s infinite;
         }
 
-        @keyframes shine { 0% { left: -100%; } 100% { left: 100%; } }
+        @keyframes shine { 0% { left: -100%; } 100% { left: 150%; } }
 
-        .tagline-niche { font-size: 14px; color: #a0a0a0; font-weight: 500; }
+        .tagline-niche { font-size: 15px; color: #a0a0a0; font-weight: 600; }
 
-        /* 5. Services Card Section */
-        .services-card {
+        /* 5. Footer Details */
+        .details-card {
             background: white;
             border-radius: 40px 40px 0 0;
-            padding: 40px 25px;
-            box-shadow: 0 -10px 40px rgba(0,0,0,0.03);
+            padding: 45px 25px 30px;
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.04);
         }
 
-        .label { color: #6c5ce7; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; display: block; }
-        .about-txt { font-size: 14px; color: #666; line-height: 1.7; margin-bottom: 30px; }
+        .label { color: #6c5ce7; font-size: 13px; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; display: block; letter-spacing: 1px; }
+        .about-txt { font-size: 14px; color: #555; line-height: 1.8; margin-bottom: 30px; }
 
-        .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 30px; }
-        .badge { background: #f0f2ff; padding: 8px 16px; border-radius: 12px; font-size: 12px; font-weight: 600; color: #555; }
+        .badge-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 35px; }
+        .badge { background: #f4f6ff; padding: 10px 18px; border-radius: 14px; font-size: 12px; font-weight: 600; color: #555; }
 
         /* Social Links */
         .social-btn {
             display: flex;
             align-items: center;
             gap: 15px;
-            padding: 16px;
-            background: #fafafa;
-            border-radius: 20px;
-            margin-bottom: 12px;
+            padding: 18px;
+            background: #fff;
+            border-radius: 22px;
+            margin-bottom: 15px;
             text-decoration: none;
-            border: 1px solid #eee;
+            border: 1px solid #f0f0f0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
         }
-        .social-btn i { font-size: 22px; }
-        .social-btn span { font-size: 14px; font-weight: 700; color: #333; }
+        .social-btn i { font-size: 24px; }
         .fa-whatsapp { color: #25D366; }
         .fa-instagram { color: #E1306C; }
+        .social-btn span { font-size: 15px; font-weight: 700; color: #333; }
 
+        .copy { text-align: center; margin-top: 35px; font-size: 11px; color: #ccc; letter-spacing: 0.5px; }
     </style>
 </head>
 <body>
 
     <header class="app-header">
         <div class="logo-box" onclick="location.reload();">
-            <img src="https://i.ibb.co/N6hV9Z31/IMG-20251231-170337.jpg" alt="Logo" class="header-logo">
+            <img src="https://i.ibb.co/N6hV9Z31/IMG-20251231-170337.jpg" alt="Rise Up" class="header-logo">
             <span class="brand-name">RISE UP</span>
         </div>
     </header>
 
     <div class="instruction-box">
-        <div class="instr-item">
-            <span class="main-instr">⚠️ MINIMUM 5 CAMPAIGNS REQUIRED</span>
-        </div>
-        <div class="instr-item">
-            <span class="sub-instr">SCREENSHOT SUBMISSION IS MANDATORY FOR PAYOUT</span>
-        </div>
+        <span class="main-instr">⚠️ MINIMUM 5 CAMPAIGNS REQUIRED</span>
+        <span class="sub-instr">SCREENSHOT SUBMISSION IS MANDATORY TO START YOUR WORK</span>
     </div>
 
     <main class="campaign-container">
@@ -183,18 +183,21 @@
         <p class="tagline-niche">Rise higher, earn smarter with Rise Up.</p>
     </main>
 
-    <section class="services-card">
-        <span class="label">Our Mission</span>
+    <section class="details-card">
+        <span class="label">About Platform</span>
         <p class="about-txt">Rise Up is a professional platform dedicated to empowering individuals through digital excellence.</p>
 
-        <span class="label">Verified Tasks</span>
+        <span class="label">Core Services</span>
         <div class="badge-row">
             <span class="badge">Data Entry</span>
             <span class="badge">Demet</span>
             <span class="badge">Pending KYC Clear</span>
         </div>
 
-        <span class="label">Official Support</span>
+        <span class="label">Founders</span>
+        <p class="about-txt" style="font-weight: 700; color: #1a1a1a;">Akash & Sourabh</p>
+
+        <span class="label">Connect With Us</span>
         <a href="https://wa.me/918968146117" class="social-btn">
             <i class="fab fa-whatsapp"></i>
             <span>WhatsApp Business</span>
@@ -204,7 +207,7 @@
             <span>Instagram Official</span>
         </a>
 
-        <p style="text-align: center; margin-top: 30px; font-size: 11px; color: #ccc;">© 2025 RISE UP GROUP | ALL RIGHTS RESERVED</p>
+        <p class="copy">© 2025 RISE UP GROUP | ALL RIGHTS RESERVED</p>
     </section>
 
 </body>
