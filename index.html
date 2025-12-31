@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rise Up | Rise Higher, Earn Smarter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #ffffff);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .alert-bar {
+            background: #ffcc00;
+            color: #000;
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header { padding: 20px 5%; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); }
+        .logo { font-size: 28px; font-weight: 900; color: #fff; letter-spacing: 1px; }
+
+        .hero {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .hero-img {
+            width: 250px;
+            margin-bottom: 25px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 5vw, 60px);
+            font-weight: 800;
+            color: #fff;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            background: #fff;
+            color: #333;
+            padding: 18px 45px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .cta-button:hover { transform: translateY(-5px); background: #2c3e50; color: #fff; }
+
+        footer {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px 5%;
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col h3 { color: #2c3e50; margin-bottom: 15px; font-size: 18px; }
+        .footer-col p, .footer-col li, .footer-col a {
+            font-size: 14px; color: #555; line-height: 1.8; text-decoration: none; display: block;
+        }
+
+        .footer-col a:hover { color: #e73c7e; }
+
+        .founder-names { font-weight: 700; color: #333; }
+    </style>
+</head>
+<body>
+
+    <div class="alert-bar">
+        ⚠️ IMPORTANT: MINIMUM 5 CAMPAIGNS REQUIRED TO PROCEED
+    </div>
+
+    <header>
+        <div class="logo">Rise Up.</div>
+    </header>
+
+    <section class="hero">
+        <img src="https://cdni.iconscout.com/illustration/premium/thumb/business-growth-illustration-download-in-svg-png-gif-file-formats--investment-logo-profit-increase-stats-pack-finance-illustrations-4028373.png" alt="Rise Up" class="hero-img">
+        <h1>MAKE YOUR<br>CAMPAIGN</h1>
+        <a href="home.html" class="cta-button">Click Here To Join</a>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>About Us</h3>
+                <p>Rise Up is a professional platform designed to empower individuals through transparent digital tasks and financial growth opportunities.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Our Work</h3>
+                <p>• Data Entry Projects</p>
+                <p>• Demat Account Opening</p>
+                <p>• Pending KYC Clearance</p>
+            </div>
+            <div class="footer-col">
+                <h3>Management</h3>
+                <p class="founder-names">Mr. Akash (Founder)</p>
+                <p class="founder-names">Mr. Sourabh (Co-Founder)</p>
+            </div>
+            <div class="footer-col">
+                <h3>Connect</h3>
+                <a href="https://wa.me/918968146117" target="_blank"><i class="fab fa-whatsapp"></i> 8968146117</a>
+                <a href="https://www.instagram.com/riseup_by_akash?igsh=MXE4MmJmNDhyNTAxNQ==" target="_blank"><i class="fab fa-instagram"></i> @riseup_by_akash</a>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 30px; font-size: 12px; color: #999;">
+            &copy; 2025 RISE UP GROUP. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
