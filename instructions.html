@@ -7,78 +7,104 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background: #f8faff; color: #333; }
-        
-        .header { padding: 20px; text-align: center; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .header img { width: 50px; filter: drop-shadow(0 4px 6px rgba(108, 92, 231, 0.2)); }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; -webkit-tap-highlight-color: transparent; }
+        body { background: #f8faff; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
+
+        /* Wahi Background jo Home mein hai */
+        .doodle-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at top right, #fce4ec, #e3f2fd, #ffffff); }
+        .doodle { position: absolute; color: rgba(108, 92, 231, 0.12); pointer-events: none; animation: floatDoodle 10s linear infinite; }
+        @keyframes floatDoodle { 0% { transform: translateY(110vh) rotate(0deg); opacity: 0; } 20% { opacity: 1; } 100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; } }
+
+        /* Header with Back Button */
+        .header { 
+            padding: 15px 20px; 
+            background: rgba(255, 255, 255, 0.1); 
+            backdrop-filter: blur(10px);
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .back-btn { 
+            font-size: 14px; 
+            color: #6c5ce7; 
+            text-decoration: none; 
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            text-transform: uppercase;
+        }
+        .header img { width: 42px; filter: drop-shadow(0 4px 6px rgba(108, 92, 231, 0.2)); }
         
         .container { padding: 20px; max-width: 500px; margin: auto; padding-bottom: 40px; }
-        .card { background: white; border-radius: 30px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .card { background: white; border-radius: 30px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid rgba(108, 92, 231, 0.05); }
         
         .title { font-size: 22px; font-weight: 800; color: #6c5ce7; margin-bottom: 10px; text-transform: uppercase; }
         .desc { font-size: 13px; color: #666; margin-bottom: 20px; line-height: 1.6; }
         
-        .section-label { font-size: 12px; font-weight: 800; color: #1a1a1a; text-transform: uppercase; margin-top: 20px; display: block; border-left: 4px solid #6c5ce7; padding-left: 10px; margin-bottom: 10px; }
+        .section-label { font-size: 12px; font-weight: 800; color: #1a1a1a; text-transform: uppercase; margin-top: 200px; display: block; border-left: 4px solid #6c5ce7; padding-left: 10px; margin-bottom: 10px; margin-top: 20px; }
         
         .list-item { display: flex; gap: 10px; margin: 10px 0; font-size: 13px; font-weight: 500; line-height: 1.4; }
         .list-item i { color: #6c5ce7; margin-top: 3px; font-size: 14px; }
-
-        .warning-box { background: #fff5f5; border: 1px solid #feb2b2; padding: 15px; border-radius: 15px; margin-top: 20px; font-size: 12px; color: #c53030; line-height: 1.5; }
-        .warning-box strong { display: block; margin-bottom: 5px; text-transform: uppercase; }
-
-        .btn { background: #6c5ce7; color: white; display: block; text-align: center; padding: 18px; border-radius: 20px; text-decoration: none; font-weight: 700; margin-top: 25px; box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3); }
     </style>
 </head>
 <body>
 
+    <div class="doodle-bg" id="doodleBg"></div>
+
     <div class="header">
+        <a href="home.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back</a>
         <img src="https://i.ibb.co/HDXQJshq/23912.png" alt="Rise Up">
+        <div style="width: 50px;"></div> 
     </div>
 
     <div class="container" id="content">
         </div>
 
     <script>
+        // Stars Animation (Same as Home)
+        const doodleBg = document.getElementById('doodleBg');
+        for (let i = 0; i < 30; i++) {
+            const icon = document.createElement('i');
+            icon.className = `fas fa-star doodle`;
+            icon.style.left = Math.random() * 100 + 'vw';
+            icon.style.animationDuration = (Math.random() * 5 + 7) + 's';
+            doodleBg.appendChild(icon);
+        }
+
         const data = {
             "airtel-fiber": {
                 name: "Airtel Xstream Fiber",
-                desc: "Airtel Xstream Fiber is a broadband service that uses fiber optic technology to deliver high-speed internet connections to homes. It offers speeds of up to 1 Gbps and is designed for reliable and efficient internet usage.",
+                desc: "Airtel Xstream Fiber is a high-speed broadband service designed for reliable internet usage.",
                 fees: ["₹0 installation charges", "Pay for the plan you choose"],
-                important: "Do not apply multiple connections from same latitude and longitude. Do not apply from same device (Same IP will not consider for payout)."
+                rules: ["Do not apply multiple connections from same location.", "Unique device and IP required."]
             },
             "idfc-bank": {
                 name: "IDFC FIRST Bank",
-                desc: "IDFC FIRST Bank Savings Account makes it easy to meet your savings goals with a high interest rate up to 7.25% p.a.",
-                fees: ["Average monthly balance: Rs. 10,000 for visa classic debit card A/C", "Average monthly balance: Rs. 25,000 for visa platinum debit card A/C"],
-                important: "Monthly interest credits and zero charges on all commonly used Savings Account services."
-            },
-            "hdfc-card": {
-                name: "HDFC Credit Card",
-                desc: "One stop to manage your HDFC Bank Credit Card, Debit Card, Fastag etc. Access your account and track spending online.",
-                fees: ["Credit Card Joining Charge: Rs. 500", "Credit Card Annual Charge: Rs. 500"],
-                docs: ["Aadhaar Card", "PAN Card", "Mobile number should be registered with Aadhaar card", "Address proof", "Income proof (Salary slip) or (Bank Statement)"],
-                important: "Ensure all documents are clear and valid."
+                desc: "High interest rate savings account with zero charges on common services.",
+                fees: ["Average monthly balance: Rs. 10,000 / 25,000"],
+                rules: ["Monthly interest credits.", "Full KYC mandatory."]
             },
             "axis-mf": {
                 name: "Axis Mutual Fund",
-                desc: "Start your investment journey with Axis Mutual Fund with zero initial costs.",
+                desc: "Start your investment journey with zero initial costs.",
                 fees: ["₹0 Account Opening Charges", "₹0 Account Maintenance Charges"],
-                docs: ["Aadhaar Card", "PAN Card", "Mobile number should be registered with Aadhar card", "Bank Account"],
-                important: "Follow the investment steps carefully for successful tracking."
+                docs: ["Aadhaar Card", "PAN Card", "Aadhaar-Mobile Link", "Bank Account"]
             },
-            "default": { // For Angel One, Upstox, Tide, Jainam, etc.
+            "default": {
                 name: "Campaign Instructions",
-                desc: "Follow the steps below to complete your account opening process.",
-                docs: ["Aadhaar Card", "PAN Card", "Mobile number registered with Aadhaar card"],
-                important: "Amount will be credited when you follow these steps: 1. Use your mobile data not wifi. 2. If you have app in your phone then delete the app and download with our link."
+                desc: "Follow these steps to ensure your account is tracked correctly.",
+                docs: ["Aadhaar Card", "PAN Card", "Mobile number registered with Aadhaar"],
+                rules: ["Use your Mobile Data only (No Wi-Fi).", "Delete existing app and download via our link."]
             }
         };
 
         const params = new URLSearchParams(window.location.search);
         const campKey = params.get('camp');
-        
-        // If campKey exists in data, use it, otherwise use 'default'
         const info = data[campKey] || data["default"];
         if(campKey && !data[campKey]) { info.name = campKey.replace(/-/g, ' '); }
 
@@ -95,15 +121,10 @@
                 ${info.docs.map(d => `<div class="list-item"><i class="fas fa-file-invoice"></i><span>${d}</span></div>`).join('')}` : ''}
 
                 <span class="section-label">Important Rules</span>
+                ${info.rules ? info.rules.map(r => `<div class="list-item"><i class="fas fa-check-circle"></i><span>${r}</span></div>`).join('') : `
                 <div class="list-item"><i class="fas fa-mobile-alt"></i><span>Use your <b>Mobile Data</b> only (No Wi-Fi).</span></div>
                 <div class="list-item"><i class="fas fa-trash-alt"></i><span>Delete existing app and download via our link.</span></div>
-                
-                <div class="warning-box">
-                    <strong>⚠️ Mandatory Warning:</strong>
-                    ${info.important}
-                </div>
-
-                <a href="#" class="btn">PROCEED TO START</a>
+                `}
             </div>
         `;
     </script>
