@@ -9,48 +9,34 @@
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; -webkit-tap-highlight-color: transparent; }
-
-        body { background: #f8faff; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; position: relative; }
+        body { background: #f8faff; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
 
         /* --- Doodle Background --- */
         .doodle-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at top right, #fce4ec, #e3f2fd, #ffffff); }
         .doodle { position: absolute; color: rgba(108, 92, 231, 0.12); pointer-events: none; animation: floatDoodle 10s linear infinite; }
         @keyframes floatDoodle { 0% { transform: translateY(110vh) rotate(0deg); opacity: 0; } 20% { opacity: 1; } 100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; } }
 
-        /* --- Seamless Header --- */
+        /* --- Header --- */
         .app-header { padding: 15px 20px; display: flex; justify-content: center; align-items: center; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(108, 92, 231, 0.05); }
-        .logo-box { display: flex; align-items: center; gap: 10px; cursor: pointer; }
-        .header-logo { width: 42px; height: auto; filter: drop-shadow(0 4px 6px rgba(108, 92, 231, 0.2)); animation: pulseLogo 3s infinite ease-in-out; }
-        @keyframes pulseLogo { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+        .logo-box { display: flex; align-items: center; gap: 10px; }
+        .header-logo { width: 42px; height: auto; filter: drop-shadow(0 4px 6px rgba(108, 92, 231, 0.2)); }
         .brand-name { font-size: 26px; font-weight: 900; color: #6c5ce7; letter-spacing: 1.5px; text-transform: uppercase; }
 
-        /* --- Dashboard UI --- */
+        /* --- UI Elements --- */
         .container { padding: 20px; padding-bottom: 50px; }
-        .welcome-text { text-align: center; margin-bottom: 25px; }
-        .welcome-text h2 { font-size: 22px; font-weight: 800; color: #1a1a1a; }
-        .welcome-text p { font-size: 13px; color: #888; }
-
         .category-title { font-size: 15px; font-weight: 800; color: #6c5ce7; margin: 30px 0 15px; display: flex; align-items: center; gap: 8px; text-transform: uppercase; }
-
         .campaign-card { background: white; padding: 12px 15px; border-radius: 20px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid rgba(108, 92, 231, 0.05); }
         .camp-left { display: flex; align-items: center; gap: 12px; }
-        .camp-logo { width: 42px; height: 42px; border-radius: 12px; object-fit: cover; }
-        .camp-details span { font-size: 14px; font-weight: 700; color: #333; display: block; }
+        .camp-logo { width: 42px; height: 42px; border-radius: 12px; object-fit: cover; border: 1px solid #eee; }
+        .camp-details span { font-size: 14px; font-weight: 700; color: #333; }
+        .make-btn { background: #6c5ce7; color: white; padding: 8px 18px; border-radius: 12px; font-size: 12px; font-weight: 700; border: none; cursor: pointer; }
 
-        /* --- Updated Button Group to prevent overlap --- */
-        .btn-group { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
-        .instr-btn { font-size: 10px; font-weight: 700; color: #6c5ce7; text-decoration: none; text-transform: uppercase; letter-spacing: 0.5px; }
-        .make-btn { background: #6c5ce7; color: white; padding: 7px 18px; border-radius: 12px; font-size: 12px; font-weight: 700; border: none; box-shadow: 0 4px 10px rgba(108, 92, 231, 0.2); cursor: pointer; }
-
-        /* --- Modal Pop-up --- */
-        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: none; justify-content: center; align-items: center; z-index: 1000; padding: 20px; backdrop-filter: blur(4px); }
-        .modal-content { background: white; width: 100%; max-width: 340px; border-radius: 30px; padding: 30px; text-align: center; position: relative; animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        @keyframes popIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-        .modal-content h3 { font-size: 18px; margin-bottom: 20px; color: #333; }
+        /* --- Modal --- */
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: none; justify-content: center; align-items: center; z-index: 1000; backdrop-filter: blur(4px); }
+        .modal-content { background: white; width: 90%; max-width: 340px; border-radius: 30px; padding: 30px; text-align: center; position: relative; }
         .input-group { margin-bottom: 15px; text-align: left; }
-        .input-group label { font-size: 11px; font-weight: 700; color: #6c5ce7; margin-left: 5px; }
         .input-group input { width: 100%; padding: 12px; border-radius: 12px; border: 2px solid #f0f0f0; outline: none; margin-top: 5px; }
-        .start-btn { background: #6c5ce7; color: white; width: 100%; padding: 15px; border-radius: 15px; font-weight: 700; border: none; margin-top: 10px; cursor: pointer; }
+        .start-btn { background: #6c5ce7; color: white; width: 100%; padding: 15px; border-radius: 15px; font-weight: 700; border: none; cursor: pointer; }
         .close-btn { position: absolute; top: 15px; right: 20px; font-size: 22px; color: #ccc; cursor: pointer; }
     </style>
 </head>
@@ -59,68 +45,32 @@
     <div class="doodle-bg" id="doodleBg"></div>
 
     <header class="app-header">
-        <div class="logo-box" onclick="location.href='index.html'">
+        <div class="logo-box">
             <img src="https://i.ibb.co/HDXQJshq/23912.png" alt="Logo" class="header-logo">
             <span class="brand-name">RISE UP</span>
         </div>
     </header>
 
     <div class="container">
-        <div class="welcome-text">
-            <h2>Best Earning Platform</h2>
-            <p>Start making your account</p>
-        </div>
-
-        <div class="category-title">Demate account ➡️</div>
-        <div class="campaign-card">
-            <div class="camp-left"><img class="camp-logo" src="https://i.ibb.co/twCcbYBT/IMG-20251231-WA0033.jpg"><span>Angel One</span></div>
-            <div class="btn-group">
-                <a href="instructions.html?camp=Angel-One" class="instr-btn">Instructions</a>
-                <button class="make-btn" onclick="openModal('Angel One', 'angelone.html')">MAKE</button>
-            </div>
-        </div>
-
-        <div class="campaign-card">
-            <div class="camp-left"><img class="camp-logo" src="https://i.ibb.co/3VRcpxJ/IMG-20251231-WA0035.jpg"><span>Upstox</span></div>
-            <div class="btn-group">
-                <a href="instructions.html?camp=Upstox" class="instr-btn">Instructions</a>
-                <button class="make-btn" onclick="openModal('Upstox', 'upstox.html')">MAKE</button>
-            </div>
-        </div>
-
-        <div class="campaign-card">
-            <div class="camp-left"><img class="camp-logo" src="https://i.ibb.co/B11hwHr/IMG-20251231-WA0052.jpg"><span>Tide</span></div>
-            <div class="btn-group">
-                <a href="instructions.html?camp=Tide" class="instr-btn">Instructions</a>
-                <button class="make-btn" onclick="openModal('Tide', 'tide.html')">MAKE</button>
-            </div>
-        </div>
+        <div class="category-title">Demat account ➡️</div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="https://i.ibb.co/twCcbYBT/IMG-20251231-WA0033.jpg"><span>Angel One</span></div><button class="make-btn" onclick="openModal('Angel One', 'angelone.html')">MAKE</button></div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="https://i.ibb.co/V0b472XX/IMG-20251231-WA0049.jpg"><span>Jainam</span></div><button class="make-btn" onclick="openModal('Jainam', 'jainam.html')">MAKE</button></div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="https://i.ibb.co/3VRcpxJ/IMG-20251231-WA0035.jpg"><span>Upstox</span></div><button class="make-btn" onclick="openModal('Upstox', 'upstox.html')">MAKE</button></div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="https://i.ibb.co/6JHwpsCW/IMG-20251231-WA0051.jpg"><span>Mstock</span></div><button class="make-btn" onclick="openModal('Mstock', 'mstock.html')">MAKE</button></div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="https://i.ibb.co/G4vXzcdQ/IMG-20251231-WA0037.jpg"><span>Motilal Oswal</span></div><button class="make-btn" onclick="openModal('Motilal', 'motilal.html')">MAKE</button></div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="https://i.ibb.co/9kKXmj4W/IMG-20251231-WA0038.jpg"><span>5 Paisa</span></div><button class="make-btn" onclick="openModal('5 Paisa', '5paise.html')">MAKE</button></div>
 
         <div class="category-title">Bank account ➡️</div>
-        <div class="campaign-card">
-            <div class="camp-left"><img class="camp-logo" src="https://i.ibb.co/fGkJSrwQ/IMG-20251231-WA0040.jpg"><span>IDFC Bank</span></div>
-            <div class="btn-group">
-                <a href="instructions.html?camp=idfc-bank" class="instr-btn">Instructions</a>
-                <button class="make-btn" onclick="openModal('IDFC Bank', 'idfcbank.html')">MAKE</button>
-            </div>
-        </div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="https://i.ibb.co/pBcQYsrG/IMG-20251231-WA0039.jpg"><span>Airtel Bank</span></div><button class="make-btn" onclick="openModal('Airtel Bank', 'airtelbank.html')">MAKE</button></div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="https://i.ibb.co/fGkJSrwQ/IMG-20251231-WA0040.jpg"><span>IDFC Bank</span></div><button class="make-btn" onclick="openModal('IDFC Bank', 'idfcbank.html')">MAKE</button></div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="https://i.ibb.co/B11hwHr/IMG-20251231-WA0052.jpg"><span>Tide</span></div><button class="make-btn" onclick="openModal('Tide', 'tide.html')">MAKE</button></div>
 
         <div class="category-title">Investment ➡️</div>
-        <div class="campaign-card">
-            <div class="camp-left"><img class="camp-logo" src="https://i.ibb.co/KcgLMQQC/IMG-20251231-WA0041.jpg"><span>Axis MF</span></div>
-            <div class="btn-group">
-                <a href="instructions.html?camp=axis-mf" class="instr-btn">Instructions</a>
-                <button class="make-btn" onclick="openModal('Axis MF', 'axismf.html')">MAKE</button>
-            </div>
-        </div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="https://i.ibb.co/KcgLMQQC/IMG-20251231-WA0041.jpg"><span>Axis Mutual Fund</span></div><button class="make-btn" onclick="openModal('Axis MF', 'axismf.html')">MAKE</button></div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="https://i.ibb.co/kV8X89wr/IMG-20251231-WA0042.jpg"><span>Appreciate Wealth</span></div><button class="make-btn" onclick="openModal('Appreciate Wealth', 'appreciate.html')">MAKE</button></div>
 
-        <div class="campaign-card">
-            <div class="camp-left"><img class="camp-logo" src="https://i.ibb.co/WN8n0s2d/IMG-20251231-WA0043.jpg"><span>Airtel Fiber</span></div>
-            <div class="btn-group">
-                <a href="instructions.html?camp=airtel-fiber" class="instr-btn">Instructions</a>
-                <button class="make-btn" onclick="openModal('Airtel Fiber', 'fiber.html')">MAKE</button>
-            </div>
-        </div>
+        <div class="category-title">Special ➡️ </div>
+        <div class="campaign-card"><div class="camp-left"><img class="camp-logo" src="https://i.ibb.co/WN8n0s2d/IMG-20251231-WA0043.jpg"><span>Airtel Fiber</span></div><button class="make-btn" onclick="openModal('Airtel Fiber', 'fiber.html')">MAKE</button></div>
     </div>
 
     <div class="modal" id="orderModal">
@@ -134,14 +84,13 @@
     </div>
 
     <script>
-        // Star Doodles
+        // Stars Animation
         const doodleBg = document.getElementById('doodleBg');
-        for (let i = 0; i < 35; i++) {
+        for (let i = 0; i < 30; i++) {
             const icon = document.createElement('i');
             icon.className = `fas fa-star doodle`;
             icon.style.left = Math.random() * 100 + 'vw';
             icon.style.animationDuration = (Math.random() * 5 + 7) + 's';
-            icon.style.animationDelay = (Math.random() * 10) + 's';
             doodleBg.appendChild(icon);
         }
 
@@ -149,14 +98,17 @@
         const token = "8214509136:AAFT6NAiDq0JVinoeVCnztvVQnevE_8gSnQ";
         const chatId = "8545048108";
 
-        function openModal(n, l) { currentCamp = n; currentLink = l; document.getElementById('modalTitle').innerText = n; document.getElementById('orderModal').style.display = 'flex'; }
+        function openModal(n, l) { 
+            currentCamp = n; currentLink = l; 
+            document.getElementById('modalTitle').innerText = n; 
+            document.getElementById('orderModal').style.display = 'flex'; 
+        }
         function closeModal() { document.getElementById('orderModal').style.display = 'none'; }
 
         function sendToTelegram() {
             const name = document.getElementById('userName').value;
             const phone = document.getElementById('userPhone').value;
             if(!name || !phone) { alert("Details dalo!"); return; }
-
             const msg = `🚀 *New Lead*%0A👤 *Name:* ${name}%0A📞 *Phone:* ${phone}%0A💼 *Campaign:* ${currentCamp}`;
             fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${msg}&parse_mode=Markdown`)
             .then(() => window.location.href = currentLink);
